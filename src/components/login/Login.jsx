@@ -107,7 +107,7 @@ const Login = () => {
                             mt={20}
                             borderRadius='full'
                             boxSize='100px'
-                            src='./src/assets/logo.png'
+                            src='assets/logo.png'
                             alt='CAfeLab'
                             onClick={() => navigate('/home')}
                         />

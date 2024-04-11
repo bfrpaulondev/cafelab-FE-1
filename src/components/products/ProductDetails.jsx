@@ -14,7 +14,7 @@ export default function ProductDetails(id) {
         variedade: 'Variety of the product',
         grao: 'Grain of the product',
         preco: 'Price of the product',
-        imagem: './src/assets/brasil.jpg',
+        imagem: 'assets/brasil.jpg',
         alt: 'Alt text for the product image'
     };
 

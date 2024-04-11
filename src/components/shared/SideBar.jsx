@@ -78,7 +78,7 @@ const SidebarContent = ({onClose}) => {
             <Image
                 borderRadius='full'
                 boxSize='75px'
-                src='./src/assets/CafeLabLogo.png'
+                src='assets/CafeLabLogo.png'
                 alt='CAfeLab'
                 onClick={() => navigate('/home')}
             />
@@ -149,7 +149,7 @@ const MobileNav = ({onOpen, ...rest}) => {
                 <Image
                     boxSize='40px'
                     margin='auto'
-                    src='src/assets/logo.png'
+                    src='assets/logo.png'
                     alt='CafeLab'
                     onClick={() => navigate('/home')}
                 />

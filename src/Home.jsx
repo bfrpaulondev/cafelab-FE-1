@@ -22,7 +22,7 @@ const Home = () => {
 
         <SidebarWithHeader>
             <Stack>
-                <Stack paddingY="60px" align="center" maxWidth="100%" backgroundImage="url('./src/assets/phimg.jpg')" spacing="40px">
+                <Stack paddingY="60px" align="center" maxWidth="100%" backgroundImage="url('assets/phimg.jpg')" spacing="40px">
                     <Stack justify="flex-start" align="center" spacing={stackSpacing} width="759px" maxWidth="100%">
                         <Stack justify="flex-start" align="center" spacing="24px">
                             <Text className="font-oliveAntique" fontWeight="extrabold" fontSize={fontSize} letterSpacing="-0.08em" color="#FFFFFF">
@@ -54,7 +54,7 @@ const Home = () => {
                 </Box>
 
                 <Stack className={"mainPanels"} mx={4} height={sectionHeight} align="center" backgroundSize={"cover"}
-                    /*backgroundColor="cornsilk"*/ backgroundImage="url('./src/assets/terrace2.jpeg')" spacing={stackSpacing}>
+                    /*backgroundColor="cornsilk"*/ backgroundImage="url('assets/terrace2.jpeg')" spacing={stackSpacing}>
                     <Stack spacing={stackSpacing} justify="flex-start" width="759px" maxWidth="100%" mt={4}>
                         <Flex direction="column" justify="space-between" align="center" height="100%">
                             <Stack justify="center" align="center" spacing={stackSpacing}>
@@ -65,7 +65,7 @@ const Home = () => {
                                 </Box>
                             </Stack>
                             <Stack justify="center" align="center" spacing={stackSpacing} my={4} width="60%" height="50%">
-                                <Image src="./src/assets/untitled.png" alt="terrace"/>
+                                <Image src="assets/untitled.png" alt="terrace"/>
                                 // TODO: Add googlemaps link
                                 <Box backgroundColor="rgba(0, 0, 0,0.7)" padding={boxPadding}>
                                     <Text className={"cafelab"} fontSize={"3xl"} align="center" letterSpacing="-0.08em" color="#FFFFFF" mx={2}>
@@ -114,7 +114,7 @@ const Home = () => {
                             <Stack borderRadius={20} mx={3} my={2} height={"650px"} align="center" maxWidth="100%" backgroundSize={"cover"} className={"fill"}
                                    spacing="40px">
                                 <Box width="100%" height="100%">
-                                    <Image src="./src/assets/terrace2.jpeg" alt="terrace" objectFit="fill" width="100%" height="100%"/>
+                                    <Image src="assets/terrace2.jpeg" alt="terrace" objectFit="fill" width="100%" height="100%"/>
                                 </Box>
                             </Stack>
                         </GridItem>
@@ -131,7 +131,7 @@ const Home = () => {
                             <Stack borderRadius={20} mx={3} my={2} height={"650px"} align="center" maxWidth="100%" backgroundSize={"cover"} className={"fill"}
                                    spacing="40px">
                                 <Box width="100%" height="100%">
-                                    <Image src="./src/assets/summerdinrk.jpeg" alt="terrace" objectFit="fill" width="100%" height="100%"/>
+                                    <Image src="assets/summerdinrk.jpeg" alt="terrace" objectFit="fill" width="100%" height="100%"/>
                                 </Box>
                             </Stack>
                         </GridItem>

@@ -9,7 +9,7 @@ const Dashboard = () => {
                 <div className="carousel-inner">
                     <div className="carousel-item active">
                         <Stack justify="flex-start" align="center" spacing="24px">
-                            <img src="./src/assets/phimg.jpg" className="d-block w-100" alt="..."></img>
+                            <img src="assets/phimg.jpg" className="d-block w-100" alt="..."></img>
                             <Text fontFamily="Inter" fontWeight="extrabold" fontSize="82px" letterSpacing="-0.08em" color="#FFFFFF">
                                 <span>Cafe.</span>
                                 <Box as="span" color="#FFFFFF" ml={2}>
@@ -24,10 +24,10 @@ const Dashboard = () => {
                         </Stack>
                     </div>
                     <div className="carousel-item">
-                        <img src="./src/assets/phimg.jpg" className="d-block w-100" alt="..."></img>
+                        <img src="assets/phimg.jpg" className="d-block w-100" alt="..."></img>
                     </div>
                     <div className="carousel-item">
-                        <img src="./src/assets/logo.png" className="d-block w-100" alt="..."></img>
+                        <img src="assets/logo.png" className="d-block w-100" alt="..."></img>
                     </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#cafeCarousel" data-bs-slide="prev">

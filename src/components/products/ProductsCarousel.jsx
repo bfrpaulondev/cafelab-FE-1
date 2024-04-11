@@ -16,9 +16,9 @@ const Carousel = () => {
             setTimeout(() => {
                 resolve([
                     { id: 1, nome: 'Brazil Santos', descricao: 'This Arabica is dry processed while it is in the cherry, so that part of the sweetness of the fruit is transported to the glass.\n' +
-                            'A typical Arabica from Brazil. Soft, balanced, medium body and low acidity, with notes of chocolate and dried fruits. This is one of those cafes that brings us nostalgia in its profile.', origem: 'Brasil', variedade: 'Catuaí and Bourbon', grao: 'Arabica', preco: '5.00', imagem: './src/assets/brasil.jpg', alt: 'Brazil Santos'},
+                            'A typical Arabica from Brazil. Soft, balanced, medium body and low acidity, with notes of chocolate and dried fruits. This is one of those cafes that brings us nostalgia in its profile.', origem: 'Brasil', variedade: 'Catuaí and Bourbon', grao: 'Arabica', preco: '5.00', imagem: 'assets/brasil.jpg', alt: 'Brazil Santos'},
                     { id: 2, nome: 'Vietnam', descricao: 'Vietnam is the leader in production of the Robusta species, being the second largest coffee producer in the world. The traditional and natural process gives this grain superior quality: medium/strong body, balanced, woody and notes of dark chocolate and dried fruits.',
-                        origem: 'Planalto Central', variedade: 'Robusta', grao: 'Robusta', preco: '5.00', imagem: './src/assets/vietnam.png', alt: 'Vietnam'},
+                        origem: 'Planalto Central', variedade: 'Robusta', grao: 'Robusta', preco: '5.00', imagem: 'assets/vietnam.png', alt: 'Vietnam'},
                 ]);
             }, 1000); // Simulate network delay
         })
