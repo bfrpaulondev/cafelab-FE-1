@@ -13,7 +13,7 @@ const Quiz = () => {
 
 
     const { questions } = quizData
-    const { question, choices, correctAnswer } = questions[activeQuestion]
+    const { question, choices } = questions[activeQuestion]
 
     const onClickNext = () => {
         setResults(results => [...results, {

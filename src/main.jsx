@@ -22,6 +22,7 @@ import Menu from "./Menu.jsx";
 import Subscricao from "./components/subscricao/Subscricao.jsx";
 import Quiz from "./components/subscricao/quiz.jsx";
 import Boutique from "./components/products/Boutique.jsx";
+import FeNoCafeLab from "./components/subscricao/FeNoCafeLab.jsx";
 
 const { ToastContainer } = createStandaloneToast();
 
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
     {
         path: "/boutique",
         element: <Boutique />
+    },
+    {
+        path: "/subscricao/fenocafelab",
+        element: <FeNoCafeLab />
     },
 ])
 

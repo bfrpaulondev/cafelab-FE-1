@@ -16,6 +16,7 @@ import {
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {quizData} from "./questions.jsx";
+import Resultado from "./Resultado.jsx";
 
 function ModalQuiz() {
 
@@ -38,10 +39,7 @@ function ModalQuiz() {
     const {question, choices, correctAnswer} = questions[activeQuestion]
 
     const onClickNext = () => {
-        setResults(results => [...results, {
-            question: question,
-            selectedAnswer: selectedAnswer
-        }]);
+        setResults(results => [...results, selectedAnswerIndex]); // Store the selected answer index
         setSelectedAnswerIndex(null)
         if (activeQuestion !== questions.length - 1) {
             setActiveQuestion((prev) => prev + 1)
@@ -99,26 +97,18 @@ function ModalQuiz() {
                         <Box as='span' className="active-question-no">RESULTADO</Box>
                     </ModalHeader>
                     <ModalBody>
-                        <Stack className="result">
-                            <p>
-                                Total Question: <span>{questions.length}</span>
-                            </p>
-                            <div>
-                                {results.map((result, index) => (
-                                    <Stack key={index}>
-                                        <p>Question: {result.question}</p>
-                                        <p>Selected Answer: {result.selectedAnswer}</p>
-                                    </Stack>
-                                ))}
-                            </div>
-                        </Stack>
+                        <Resultado
+                            exp={results[0]} // Pass the selected answer index
+                            sabor={results[1]} // Pass the selected answer index
+                            uso={results[2]}  // Pass the selected answer index
+                        />
                     </ModalBody>
                     <ModalFooter>
                         <Button  mr={3} onClick={onClose}>
-                            Não sei... vou ver as opções
+                            Prefiro escolher...
                         </Button>
-                        <Button colorScheme='blue' onClick={() => navigate('/checkout')}>
-                            Ao carrinho!
+                        <Button colorScheme='blue' onClick={() => navigate('/subscricao/fenocafelab')}>
+                            Vamos lá!
                         </Button>
                     </ModalFooter>
                 </ModalContent>

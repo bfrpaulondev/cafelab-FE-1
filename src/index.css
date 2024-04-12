@@ -57,9 +57,27 @@
     gap: 4em;
 }
 
+.main-panel {
+    position: relative;
+}
+
+.sticker-home {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    padding: 30px;
+    background-color: #556560;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 20px;
+    transform: rotate(20deg);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
 .sticker {
     position: absolute;
-    padding: 30px;
+    top: 0;
+    left: -5%;
     background-color: #343131;
     color: #fff;
     border-radius: 10px;
@@ -67,6 +85,7 @@
     transform: rotate(335deg);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
+
 
 .agenda-header {
     width: calc(100% - 2em);
