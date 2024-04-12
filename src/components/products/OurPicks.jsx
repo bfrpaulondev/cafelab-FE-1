@@ -6,7 +6,8 @@ const OurPicks = () => {
         <Stack fluid className="my-5 text-center">
             <Text className="font-oliveAntique text-center" fontSize={stackSpacing}>Nossos favoritos</Text>
             <SimpleGrid spacing={4} mb={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
-                <Card>
+                <Card
+                    backgroundColor={"#FFFFFF"}>
                     <Image
                         src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp"
                         fluid
@@ -38,7 +39,8 @@ const OurPicks = () => {
                         <h6 className="mb-3">$61.99</h6>
                     </CardBody>
                 </Card>
-                <Card>
+                <Card
+                    backgroundColor={"#FFFFFF"}>
                     <Image
                         src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
                         fluid
@@ -69,11 +71,13 @@ const OurPicks = () => {
                         <h6 className="mb-3">$61.99</h6>
                     </CardBody>
                 </Card>
-                <Card>
+                <Card
+                    backgroundColor={"#FFFFFF"}>
                     <Image
                         src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
                         fluid
                         className="w-100"
+
                     />
                     <a href="#!">
                         <Stack className="mask">

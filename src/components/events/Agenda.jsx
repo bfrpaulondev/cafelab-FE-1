@@ -80,6 +80,7 @@ const Agenda = () => {
 
     return (
         <SidebarWithHeader>
+            <Stack backgroundColor={"#556560"}>
             <Stack className={"agenda-header"} align={"center"}>
                 <Text className={"cafelab"} fontSize="6xl">
                     Acompanhe nossos eventos</Text>
@@ -95,6 +96,7 @@ const Agenda = () => {
                     </WrapItem>
                 ))}
             </Wrap>
+            </Stack>
         </SidebarWithHeader>
     )
 }

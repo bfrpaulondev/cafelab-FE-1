@@ -27,7 +27,6 @@ export default function CardWithImage({id, date, name, description, local}) {
     return (
         <Center py={6}>
             <Box
-                maxW={'300px'}
                 minW={'300px'}
                 w={'full'}
                 m={2}

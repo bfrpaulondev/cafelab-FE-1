@@ -109,8 +109,8 @@ const Home = () => {
                                 <Text className="font-oliveAntique text-center mb-5" fontSize={fontSizeMenu}>CAFELAB</Text>
 
 
-                                <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
-                                    <Image src="/assets/summerdinrk.jpeg" alt="terrace" objectFit="fill" width="100%" height="100%"/>
+                                <Box width="100%" height="80%"  minHeight={"500px"} display="flex" justifyContent="center" alignItems="center">
+                                    <Image src="/assets/summerdinrk.jpeg" alt="terrace" boxSize={sectWidth}  objectFit="fill" />
                                 </Box>
                                 <Stack justify="flex-end" maxWidth="100%" mt={sectionPadding}>
                                     <Text className="font-oliveAntique text-center" fontSize={"xl"}>Drinks refrescantes para o verão</Text>

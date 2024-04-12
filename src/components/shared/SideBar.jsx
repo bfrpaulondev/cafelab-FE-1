@@ -37,7 +37,7 @@ const LinkItems = [
     {name: 'Home', route: '/', icon: FiHome},
     {name: 'Subscrição', route: '/subscricao', icon: FiPackage},
     {name: 'Boutique', route: '/boutique', icon: MdCoffee},
-    {name: 'Agenda', route: '/events', icon: FiCalendar},
+    {name: 'Agenda', route: '/agenda', icon: FiCalendar},
     //{name: 'Customers', route: '/dashboard/customers', icon: FiUsers},
     {name: 'Contacts', route: '/contacts', icon: GrContact},
     //{name: 'Dashboard', route: '/dashboard', icon: MdAutoGraph},
