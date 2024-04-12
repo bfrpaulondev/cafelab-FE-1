@@ -78,7 +78,7 @@ const Home = () => {
                                         </Box>
                                     </Stack>
                                     <Stack justify="center" align="center" spacing={stackSpacing} my={4} width="60%" height="50%">
-                                        <Image src="assets/untitled.png" alt="terrace"/>
+                                        <Image src="/assets/untitled.png" alt="terrace"/>
                                         // TODO: Add googlemaps link
                                         <Box backgroundColor="rgba(0, 0, 0,0.7)" padding={boxPadding}>
                                             <Text className={"cafelab"} fontSize={"3xl"} align="center" letterSpacing="-0.08em" color="#FFFFFF" mx={2}>
@@ -110,7 +110,7 @@ const Home = () => {
 
 
                                 <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
-                                    <Image src="assets/summerdinrk.jpeg" alt="terrace" objectFit="fill" width="100%" height="100%"/>
+                                    <Image src="/assets/summerdinrk.jpeg" alt="terrace" objectFit="fill" width="100%" height="100%"/>
                                 </Box>
                                 <Stack justify="flex-end" maxWidth="100%" mt={sectionPadding}>
                                     <Text className="font-oliveAntique text-center" fontSize={"xl"}>Drinks refrescantes para o verão</Text>
