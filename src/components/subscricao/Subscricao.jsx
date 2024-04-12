@@ -1,6 +1,6 @@
 import SidebarWithHeader from "../shared/SideBar.jsx";
 import {Box, Button, Card, CardBody, CardHeader, CardFooter, Flex, Heading, IconButton, Image, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
-import {FaHandshake, HiOutlineLightBulb} from "react-icons/all.js";
+import {FaHandshake} from "react-icons/all.js";
 
 const Subscricao = () => {
 
@@ -88,7 +88,7 @@ const Subscricao = () => {
 
                         <CardFooter alignSelf="center">
                             <Stack alignSelf="center" justifyContent="center">
-                                <Button leftIcon={<HiOutlineLightBulb/>} onClick={() => navigate('/agenda')} size='lg' height='48px' border='2px'
+                                <Button leftIcon={<FaHandshake/>} onClick={() => navigate('/agenda')} size='lg' height='48px' border='2px'
                                         variant='outline' colorScheme='#FEEBC8'>
                                     Já sei o meu cafelab
                                 </Button>
