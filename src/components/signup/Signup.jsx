@@ -24,7 +24,7 @@ const Signup = () => {
                             boxSize='100px'
                             src='assets/logo.png'
                             alt='CAfeLab'
-                            onClick={() => navigate('/home')}
+                            onClick={() => navigate('/')}
                         />
                         <Text className={"cafelab"}  fontSize="3xl">
                             CAFELAB

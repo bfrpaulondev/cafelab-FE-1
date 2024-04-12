@@ -34,7 +34,7 @@ import Footer from "./Footer.jsx";
 import {FaShoppingCart} from "react-icons/all.js";
 
 const LinkItems = [
-    {name: 'Home', route: '/home', icon: FiHome},
+    {name: 'Home', route: '/', icon: FiHome},
     {name: 'Subscrição', route: '/subscricao', icon: FiPackage},
     {name: 'Boutique', route: '/boutique', icon: MdCoffee},
     {name: 'Agenda', route: '/events', icon: FiCalendar},
@@ -80,7 +80,7 @@ const SidebarContent = ({onClose}) => {
                 boxSize='75px'
                 src='assets/CafeLabLogo.png'
                 alt='CAfeLab'
-                onClick={() => navigate('/home')}
+                onClick={() => navigate('/')}
             />
             <Text className={"cafelab"} mb={10} fontSize="3xl">
                 CAFELAB
@@ -151,7 +151,7 @@ const MobileNav = ({onOpen, ...rest}) => {
                     margin='auto'
                     src='assets/logo.png'
                     alt='CafeLab'
-                    onClick={() => navigate('/home')}
+                    onClick={() => navigate('/')}
                 />
             </AbsoluteCenter>
             {customer ?

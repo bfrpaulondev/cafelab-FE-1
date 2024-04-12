@@ -7,5 +7,9 @@ export default defineConfig({
       react(),
     VitePWA({
         registerType: 'autoUpdate' })
-  ]
+  ],
+
+    optimizeDeps: {
+        exclude: ['js-big-decimal']
+    }
 })
