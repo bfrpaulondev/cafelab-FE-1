@@ -1,10 +1,11 @@
-import {Card, CardBody, SimpleGrid, Stack, Image, Text, useBreakpointValue} from "@chakra-ui/react";
+import {Box, Card, CardBody, Image, SimpleGrid, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
 
 const OurPicks = () => {
     const stackSpacing = useBreakpointValue({base: "20px", md: "40px"});
     return (
         <Stack fluid className="my-5 text-center">
             <Text className="font-oliveAntique text-center" fontSize={stackSpacing}>Nossos favoritos</Text>
+            /* TODO: fix image borders to fit in the card */
             <SimpleGrid spacing={4} mb={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
                 <Card
                     backgroundColor={"#FFFFFF"}>
@@ -72,13 +73,14 @@ const OurPicks = () => {
                     </CardBody>
                 </Card>
                 <Card
-                    backgroundColor={"#FFFFFF"}>
-                    <Image
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
-                        fluid
-                        className="w-100"
+                    backgroundColor={"#FFFFFF"}
+                >
+                        <Image
+                            src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
 
-                    />
+                            className="w-100"
+                            objectFit="fill"
+                        />
                     <a href="#!">
                         <Stack className="mask">
                             <Stack className="d-flex justify-content-start align-items-end h-100">

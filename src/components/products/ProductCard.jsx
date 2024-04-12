@@ -4,25 +4,24 @@ import {useNavigate} from "react-router-dom";
 
 const ProductCard = ({id, nome, descricao, origem, variedade, grao, preco, imagem, alt}) => {
     const stackSpacing = useBreakpointValue({base: "20px", md: "40px"});
-    const fontHl = useBreakpointValue({base: "6xl", md: "52px"});
-    const fontHl2 = useBreakpointValue({base: "xl", md: "2xl"});
+    const fontHl = useBreakpointValue({base: "2xl", md: "6xl"});
+    const fontHl2 = useBreakpointValue({base: "lg", md: "2xl"});
     const sectionHeight = useBreakpointValue({base: "820px", md: "800px"});
     const gridValue = useBreakpointValue({base: "repeat(2, 1fr)", md: "repeat(2, 1fr)"});
 
+    const sectWidth = useBreakpointValue({base: "100%", md: "50%"});
     const navigate = useNavigate();
     return (
-        <Stack alignItems="center" align="center" spacing="24px" mx={4}>
-            <Stack className={"mainPanels"} m={"20px"} height={sectionHeight} align='stretch' maxWidth="100%" backgroundSize={"cover"}
-                   backgroundColor="white" spacing={stackSpacing}>
-                <Grid
+        <Stack alignItems="center" align="center" >
+            <Stack className={"mainPanels"} m={"8"}  p={6} align='stretch' maxWidth="100%" backgroundSize={"cover"}
+                   backgroundColor="white">
+                <Stack
                     m={4}
-                    height={sectionHeight}
-                    templateColumns={gridValue}
-                >
-                    <GridItem alignSelf="center" rowSpan={1} m={"15%"}>
+                    direction={["column", 'row']} spacing="6" align="center" justify="space-between">
+                    <Stack mx={stackSpacing} width={sectWidth}>
                         <Image src={imagem} alt={alt} objectFit="cover"/>
-                    </GridItem>
-                    <GridItem rowSpan={1} mr={"15%"} mt={"10%"}>
+                    </Stack>
+                    <Stack spacing={stackSpacing} width={sectWidth}>
                         <Stack justify="flex-end" maxWidth="100%" mt={4}>
                             <Text className="font-oliveAntique text-center" fontSize={fontHl}>{nome}</Text>
                             <Text className="font-oliveAntique text-center" fontSize={fontHl2}>Origem:{origem}</Text>
@@ -34,14 +33,14 @@ const ProductCard = ({id, nome, descricao, origem, variedade, grao, preco, image
                             <Text className="font-oliveAntique text-left" fontSize={"xl"}>Variedade: {variedade}</Text>
                         </Stack>
 
-                        <Stack mt={8} align={'center'}>
+                        <Stack p={8} align={'center'}>
                             <Button leftIcon={<FiPackage/>} onClick={() => navigate('/agenda')} size='lg' height='48px' border='2px' variant='outline'
                                     colorScheme='#FEEBC8'>
                                 Adicionar a subscrição
                             </Button>
                         </Stack>
-                    </GridItem>
-                </Grid>
+                    </Stack>
+                </Stack>
             </Stack>
         </Stack>
     )

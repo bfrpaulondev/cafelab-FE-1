@@ -81,8 +81,8 @@ const Agenda = () => {
     return (
         <SidebarWithHeader>
             <Stack backgroundColor={"#556560"}>
-            <Stack className={"agenda-header"} align={"center"}>
-                <Text className={"cafelab"} fontSize="6xl">
+            <Stack className={"agenda-header"} m={4}>
+                <Text className={"cafelab"}  align={"center"} fontSize="5xl">
                     Acompanhe nossos eventos</Text>
             </Stack>
             <Wrap justify={"center"} spacing={"30px"}>

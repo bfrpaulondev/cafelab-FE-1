@@ -20,7 +20,6 @@ export default function ProductDetails(id) {
 
     return (
             <Stack>
-                <Stack className="p-3 max-w-7xl m-auto">
                     <ProductCard
                         id={product.id}
                         nome={product.nome}
@@ -32,7 +31,6 @@ export default function ProductDetails(id) {
                         imagem={product.imagem}
                         alt={product.alt}
                     />
-                </Stack>
             </Stack>
     );
 }

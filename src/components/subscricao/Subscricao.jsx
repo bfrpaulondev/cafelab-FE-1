@@ -4,14 +4,14 @@ import {FaHandshake} from "react-icons/all.js";
 
 const Subscricao = () => {
 
-    const fontSize = useBreakpointValue({base: "6xl", md: "62px"});
+    const fontSize = useBreakpointValue({base: "5xl", md: "62px"});
     const stackSpacing = useBreakpointValue({base: "20px", md: "40px"});
     const sectWidth = useBreakpointValue({base: "100%", md: "50%"});
 
     return (
         <SidebarWithHeader>
             <Stack backgroundColor={"#81938c"} p={10}>
-                <Stack justify="flex-start" align="center" my={6} spacing="24px">
+                <Stack justify="flex-start" align="center" my={6} mx={4} spacing="24px">
                     <Text className="font-oliveAntique" align="center" fontWeight="extrabold" fontSize={fontSize} letterSpacing="-0.08em" color="#000000">
                         SUBSCRIÇÃO CAFELAB
                     </Text>
