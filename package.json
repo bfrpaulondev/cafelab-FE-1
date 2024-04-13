@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aws-amplify/datastore": "^5.0.28",
     "@chakra-ui/react": "^2.4.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "aws-amplify": "^6.0.28",
     "axios": "^1.2.2",
     "bootstrap": "^5.3.3",
     "formik": "^2.2.9",

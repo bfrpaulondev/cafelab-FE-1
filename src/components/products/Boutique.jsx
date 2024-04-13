@@ -3,14 +3,15 @@ import SidebarWithHeader from "../shared/SideBar.jsx";
 import OurPicks from "./OurPicks.jsx";
 import {Stack} from "@chakra-ui/react";
 import ProductDetails from "./ProductDetails.jsx";
+import ProductList from "./ProductList.jsx";
 
 export default function Boutique() {
     return (
         <SidebarWithHeader>
 
             <Stack backgroundColor={"#81938c"}>
-                <ProductDetails>
-                </ProductDetails>
+                <ProductList>
+                </ProductList>
                 <Stack align={"center"} mx={10} p={10}>
                     <OurPicks>
                     </OurPicks>
