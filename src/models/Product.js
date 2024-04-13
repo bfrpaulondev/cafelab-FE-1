@@ -1,3 +1,4 @@
+
 class Product {
   constructor(init) {
     this.id = init.id;
