@@ -1,6 +1,6 @@
 import SidebarWithHeader from "../shared/SideBar.jsx";
 import {Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Image, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
-import {FaHandshake} from "react-icons/all.js";
+import {FaHandshake} from "react-icons/fa";
 
 const Subscricao = () => {
 
