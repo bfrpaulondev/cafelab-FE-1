@@ -2,7 +2,7 @@ import SidebarWithHeader from "../shared/SideBar.jsx";
 import ModalSubscricao from "./ModalSubscricao.jsx";
 import {Stack, Text, useBreakpointValue} from "@chakra-ui/react";
 import Carousel from "../products/ProductsCarousel.jsx";
-import {FaBoxOpen} from "react-icons/all.js";
+import {FaBoxOpen} from "react-icons/fa";
 import ModalQuiz from "./ModalQuiz.jsx";
 
 const FeNoCafeLab = () => {

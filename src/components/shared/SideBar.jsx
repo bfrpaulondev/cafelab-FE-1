@@ -31,7 +31,7 @@ import {MdAutoGraph, MdCoffee} from 'react-icons/md';
 import {GrContact} from 'react-icons/gr';
 import {useAuth} from "../context/AuthContext.jsx";
 import Footer from "./Footer.jsx";
-import {FaShoppingCart} from "react-icons/all.js";
+import {FaShoppingCart} from "react-icons/fa";
 
 const LinkItems = [
     {name: 'Home', route: '/', icon: FiHome},
