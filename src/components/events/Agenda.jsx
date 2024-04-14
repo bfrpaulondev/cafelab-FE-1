@@ -12,16 +12,16 @@ const Agenda = () => {
     const [err, setError] = useState("");
     const fetchEvents = () => {
         setLoading(true);
-        new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve([
-                    { id: 1, date: '2022-12-01', name: 'Cafe Lab cultural', description: 'Description 1', local: 'Cafe Lab'},
-                    { id: 2, date: '2022-12-02', name: 'Event 2', description: 'Description 2' , local: 'Feira'},
-                    // Add more fake events as needed
-                ]);
-            }, 1000); // Simulate network delay
-        })
-            .then(res => {
+        // new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve([
+        //             { id: 1, date: '2022-12-01', name: 'Cafe Lab cultural', description: 'Description 1', local: 'Cafe Lab'},
+        //             { id: 2, date: '2022-12-02', name: 'Event 2', description: 'Description 2' , local: 'Feira'},
+        //             // Add more fake events as needed
+        //         ]);
+        //     }, 1000); // Simulate network delay
+        // })
+            getEvents().then(res => {
                 setEvents(res);
             })
             .catch(err => {
