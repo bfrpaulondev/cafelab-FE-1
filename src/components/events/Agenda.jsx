@@ -1,52 +1,63 @@
 import SidebarWithHeader from "../shared/SideBar.jsx";
-import {Box, Spinner, Stack, Text, Wrap, WrapItem} from "@chakra-ui/react";
-import {getEvents} from "../../services/event.js";
-import {errorNotification} from "../../services/notification.js";
+import {Spinner, Stack, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import CardWithImage from "./EventCard.jsx";
+import {createClient} from '@supabase/supabase-js'
+
+const supabase = createClient("https://sbkrffeyngcjbzrwhvdq.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNia3JmZmV5bmdjamJ6cndodmRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTMxOTM2MjgsImV4cCI6MjAyODc2OTYyOH0.COR1kdIkfK19CRDIrdwmI2CQD8VXdnF46cc0Ql8ofyU");
 
 const Agenda = () => {
 
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(false);
     const [err, setError] = useState("");
-    const fetchEvents = () => {
-        setLoading(true);
-        // new Promise((resolve, reject) => {
-        //     setTimeout(() => {
-        //         resolve([
-        //             { id: 1, date: '2022-12-01', name: 'Cafe Lab cultural', description: 'Description 1', local: 'Cafe Lab'},
-        //             { id: 2, date: '2022-12-02', name: 'Event 2', description: 'Description 2' , local: 'Feira'},
-        //             // Add more fake events as needed
-        //         ]);
-        //     }, 1000); // Simulate network delay
-        // })
-            getEvents().then(res => {
-                setEvents(res);
-            })
-            .catch(err => {
-                setError('An error occurred');
-                errorNotification('Error', 'An error occurred');
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-        // getEvents().then(res => {
-        //     setEvents(res.data)
-        // }).catch(err => {
-        //     setError(err.response.data.message)
-        //     errorNotification(
-        //         err.code,
-        //         err.response.data.message
-        //     )
-        // }).finally(() => {
-        //     setLoading(false)
-        // })
-    }
+
+    // const fetchEvents = () => {
+    //     setLoading(true);
+    //     // new Promise((resolve, reject) => {
+    //     //     setTimeout(() => {
+    //     //         resolve([
+    //     //             { id: 1, date: '2022-12-01', name: 'Cafe Lab cultural', description: 'Description 1', local: 'Cafe Lab'},
+    //     //             { id: 2, date: '2022-12-02', name: 'Event 2', description: 'Description 2' , local: 'Feira'},
+    //     //             // Add more fake events as needed
+    //     //         ]);
+    //     //     }, 1000); // Simulate network delay
+    //     // })
+    // }
 
     useEffect(() => {
-        fetchEvents();
+        getEvents();
     }, [])
+
+    async function getEvents() {
+        setLoading(true);
+        try {
+            const { data, error } = await supabase
+                .from('events')
+                .select()
+            console.log(data)
+            setEvents(data);
+            if (error) {
+                setError(error.message);
+            }
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    // getEvents().then(res => {
+    //     setEvents(res.data)
+    // }).catch(err => {
+    //     setError(err.response.data.message)
+    //     errorNotification(
+    //         err.code,
+    //         err.response.data.message
+    //     )
+    // }).finally(() => {
+    //     setLoading(false)
+    // })
 
     if (loading) {
         return (
@@ -70,7 +81,7 @@ const Agenda = () => {
         )
     }
 
-    if(events.length <= 0) {
+    if (events.length <= 0) {
         return (
             <SidebarWithHeader>
                 <Text mt={5}>No events available</Text>
@@ -81,21 +92,21 @@ const Agenda = () => {
     return (
         <SidebarWithHeader>
             <Stack backgroundColor={"#556560"}>
-            <Stack className={"agenda-header"} m={4}>
-                <Text className={"cafelab"}  align={"center"} fontSize="5xl">
-                    Acompanhe nossos eventos</Text>
-            </Stack>
-            <Wrap justify={"center"} spacing={"30px"}>
-                {events.map((event, index) => (
-                    <WrapItem key={index}>
-                        <CardWithImage
-                            {...event}
-                            imageNumber={index}
-                            fetchEvents={fetchEvents}
-                        />
-                    </WrapItem>
-                ))}
-            </Wrap>
+                <Stack className={"agenda-header"} m={4}>
+                    <Text className={"cafelab"} align={"center"} fontSize="5xl">
+                        Acompanhe nossos eventos</Text>
+                </Stack>
+                <Wrap justify={"center"} spacing={"30px"}>
+                    {events.map((event, index) => (
+                        <WrapItem key={index}>
+                            <CardWithImage
+                                {...event}
+                                imageNumber={index}
+                                fetchEvents={getEvents}
+                            />
+                        </WrapItem>
+                    ))}
+                </Wrap>
             </Stack>
         </SidebarWithHeader>
     )
