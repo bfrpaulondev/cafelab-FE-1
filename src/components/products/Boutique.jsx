@@ -2,7 +2,6 @@ import React from "react";
 import SidebarWithHeader from "../shared/SideBar.jsx";
 import OurPicks from "./OurPicks.jsx";
 import {Stack} from "@chakra-ui/react";
-import ProductDetails from "./ProductDetails.jsx";
 import ProductList from "./ProductList.jsx";
 
 export default function Boutique() {

@@ -206,3 +206,8 @@
     min-width: 100%;
     min-height: 100%
 }
+
+.product-img {
+    height: 300px;
+    width: auto;
+}

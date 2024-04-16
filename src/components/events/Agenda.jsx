@@ -4,8 +4,6 @@ import React, {useEffect, useState} from "react";
 import CardWithImage from "./EventCard.jsx";
 import {createClient} from '@supabase/supabase-js'
 
-const supabase = createClient("https://sbkrffeyngcjbzrwhvdq.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNia3JmZmV5bmdjamJ6cndodmRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTMxOTM2MjgsImV4cCI6MjAyODc2OTYyOH0.COR1kdIkfK19CRDIrdwmI2CQD8VXdnF46cc0Ql8ofyU");
-
 const Agenda = () => {
 
     const [events, setEvents] = useState([]);
@@ -76,7 +74,7 @@ const Agenda = () => {
     if (err) {
         return (
             <SidebarWithHeader>
-                <Text mt={5}>Ooops there was an error</Text>
+                <Text mt={5}>err</Text>
             </SidebarWithHeader>
         )
     }
@@ -102,7 +100,7 @@ const Agenda = () => {
                             <CardWithImage
                                 {...event}
                                 imageNumber={index}
-                                fetchEvents={getEvents}
+                                events={getEvents}
                             />
                         </WrapItem>
                     ))}
