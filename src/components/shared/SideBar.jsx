@@ -1,53 +1,46 @@
 import React from 'react';
 import {
     AbsoluteCenter,
-    Avatar,
     Box,
     CloseButton,
     Drawer,
     DrawerContent,
     Flex,
-    HStack,
     Icon,
     IconButton,
     Image,
     Link,
-    Menu,
-    MenuButton,
-    MenuDivider,
-    MenuItem,
-    MenuList,
     Text,
     useColorModeValue,
-    useDisclosure,
-    VStack
+    useDisclosure
 } from '@chakra-ui/react';
 
 import {useNavigate} from 'react-router-dom';
 
-import {FiBell, FiChevronDown, FiHome, FiLogIn, FiMenu, FiSettings, FiUsers, FiCalendar, FiPackage} from 'react-icons/fi';
+import {FiCalendar, FiHome, FiMail, FiMenu, FiPackage, FiSettings} from 'react-icons/fi';
 
-import {MdAutoGraph, MdCoffee} from 'react-icons/md';
+import {MdCoffee} from 'react-icons/md';
 import {GrContact} from 'react-icons/gr';
-import {useAuth} from "../context/AuthContext.jsx";
 import Footer from "./Footer.jsx";
 import {FaShoppingCart} from "react-icons/fa";
+import {useShoppingCart} from "../context/ShoppingCartContext.jsx";
+import {Stack} from "react-bootstrap";
+import {FaA} from "react-icons/fa6";
 
 const LinkItems = [
     {name: 'Home', route: '/', icon: FiHome},
     {name: 'Subscrição', route: '/subscricao', icon: FiPackage},
     {name: 'Boutique', route: '/boutique', icon: MdCoffee},
     {name: 'Agenda', route: '/agenda', icon: FiCalendar},
-    //{name: 'Customers', route: '/dashboard/customers', icon: FiUsers},
-    {name: 'Contacts', route: '/contacts', icon: GrContact},
-    //{name: 'Dashboard', route: '/dashboard', icon: MdAutoGraph},
-    {name: 'Settings', route: '/dashboard/settings', icon: FiSettings},
+    {name: 'Contactos', route: '/contactos', icon: FiMail},
+    {name: 'Sobre o cafelab', route: '/sobre', icon: FaA},
+    {name: 'Política de reembolso', route: '/reembolso', icon: FaA},
 ];
 
 export default function SidebarWithHeader({children}) {
     const {isOpen, onOpen, onClose} = useDisclosure();
     return (
-        <Flex minH="100vh" bg={useColorModeValue('white', 'gray.900')}  direction="column">
+        <Flex minH="100vh" bg={useColorModeValue('white', 'gray.900')} direction="column">
             <Drawer
                 autoFocus={false}
                 isOpen={isOpen}
@@ -126,8 +119,9 @@ const NavItem = ({icon, route, children, ...rest}) => {
 };
 
 const MobileNav = ({onOpen, ...rest}) => {
-    const {logOut, customer} = useAuth()
     const navigate = useNavigate();
+    const {cartQuantity, openCart} = useShoppingCart()
+
     return (
         <Flex
             height="20"
@@ -154,63 +148,29 @@ const MobileNav = ({onOpen, ...rest}) => {
                     onClick={() => navigate('/')}
                 />
             </AbsoluteCenter>
-            {customer ?
-                <HStack spacing={{base: '0', md: '6'}} mr={{base: 4, md: 60}}>
-                    <IconButton
-                        size="lg"
-                        variant="ghost"
-                        aria-label="open menu"
-                        icon={<FiBell/>}
-                    />
-                    <Flex alignItems={'center'}
-                    >
-                        <Menu>
-                            <MenuButton
-                                py={2}
-                                transition="all 0.3s"
-                                _focus={{boxShadow: 'none'}}>
-                                <HStack>
-                                    <Avatar
-                                        size={'sm'}
-                                        src={
-                                            'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                                        }
-                                    />
-                                    <VStack
-                                        display={{base: 'none', md: 'flex'}}
-                                        alignItems="flex-start"
-                                        spacing="1px"
-                                        ml="2">
-                                    </VStack>
-                                    <Box display={{base: 'none', md: 'flex'}}>
-                                        <FiChevronDown/>
-                                    </Box>
-                                </HStack>
-                            </MenuButton>
-                            <MenuList
-                                bg={useColorModeValue('white', 'gray.900')}
-                                borderColor={useColorModeValue('gray.200', 'gray.700')}>
-                                <MenuItem>Profile</MenuItem>
-                                <MenuItem>Settings</MenuItem>
-                                <MenuItem>Billing</MenuItem>
-                                <MenuDivider/>
-                                <MenuItem onClick={logOut}>
-                                    Sign out
-                                </MenuItem>
-                            </MenuList>
-                        </Menu>
-                    </Flex>
-                </HStack> :
-                <IconButton
-                    mr={{base: 4, md: 60}}
-                    size="lg"
-                    variant="ghost"
-                    aria-label="log in"
-                    icon={<FaShoppingCart/>}
-                    onClick={() => navigate('/cart')}
-                />
-            }
-
+            <IconButton
+                mr={{base: 4, md: 60}}
+                size="lg"
+                variant="ghost"
+                aria-label="log in"
+                icon={<FaShoppingCart/>}
+                onClick={openCart}
+            >
+            <Stack
+                className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                style={{
+                    color: "white",
+                    width: "1.5rem",
+                    height: "1.5rem",
+                    position: "absolute",
+                    bottom: 0,
+                    right: 0,
+                    transform: "translate(25%, 25%)",
+                }}
+            >
+                {cartQuantity}
+            </Stack>
+            </IconButton>
         </Flex>
     );
 };

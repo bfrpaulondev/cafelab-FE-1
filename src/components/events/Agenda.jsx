@@ -2,7 +2,7 @@ import SidebarWithHeader from "../shared/SideBar.jsx";
 import {Spinner, Stack, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import CardWithImage from "./EventCard.jsx";
-import {createClient} from '@supabase/supabase-js'
+import { getEvents } from '../../services/eventService.js';
 
 const Agenda = () => {
 
@@ -10,52 +10,22 @@ const Agenda = () => {
     const [loading, setLoading] = useState(false);
     const [err, setError] = useState("");
 
-    // const fetchEvents = () => {
-    //     setLoading(true);
-    //     // new Promise((resolve, reject) => {
-    //     //     setTimeout(() => {
-    //     //         resolve([
-    //     //             { id: 1, date: '2022-12-01', name: 'Cafe Lab cultural', description: 'Description 1', local: 'Cafe Lab'},
-    //     //             { id: 2, date: '2022-12-02', name: 'Event 2', description: 'Description 2' , local: 'Feira'},
-    //     //             // Add more fake events as needed
-    //     //         ]);
-    //     //     }, 1000); // Simulate network delay
-    //     // })
-    // }
-
     useEffect(() => {
-        getEvents();
+        fetchEvents();
     }, [])
 
-    async function getEvents() {
+    async function fetchEvents() {
         setLoading(true);
         try {
-            const { data, error } = await supabase
-                .from('events')
-                .select()
-            console.log(data)
+            const data = await getEvents();
+            console.log("data: ", data);
             setEvents(data);
-            if (error) {
-                setError(error.message);
-            }
         } catch (error) {
             setError(error.message);
         } finally {
             setLoading(false);
         }
     }
-
-    // getEvents().then(res => {
-    //     setEvents(res.data)
-    // }).catch(err => {
-    //     setError(err.response.data.message)
-    //     errorNotification(
-    //         err.code,
-    //         err.response.data.message
-    //     )
-    // }).finally(() => {
-    //     setLoading(false)
-    // })
 
     if (loading) {
         return (
@@ -72,6 +42,7 @@ const Agenda = () => {
     }
 
     if (err) {
+        console.log(err)
         return (
             <SidebarWithHeader>
                 <Text mt={5}>err</Text>

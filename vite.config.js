@@ -8,8 +8,8 @@ const pwaOptions = {
     base: '/',
     includeAssets: ['favicon.svg'],
     manifest: {
-        name: 'PWA Router',
-        short_name: 'PWA Router',
+        name: 'CAFELAB',
+        short_name: 'Cafelab',
         theme_color: '#ffffff',
         icons: [
             {
