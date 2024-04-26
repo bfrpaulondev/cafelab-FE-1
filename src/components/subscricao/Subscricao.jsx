@@ -1,12 +1,51 @@
 import SidebarWithHeader from "../shared/SideBar.jsx";
-import {Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Image, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
+import {
+    Box,
+    Button,
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    Flex,
+    Image,
+    Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader,
+    ModalOverlay,
+    Stack,
+    Text,
+    useBreakpointValue,
+    useDisclosure
+} from "@chakra-ui/react";
 import {FaHandshake} from "react-icons/fa";
+import {useShoppingCart} from "../context/ShoppingCartContext.jsx";
+import {useNavigate} from "react-router-dom";
+import ProductsCarousel from "../products/ProductsCarousel.jsx";
 
 const Subscricao = () => {
 
     const fontSize = useBreakpointValue({base: "5xl", md: "62px"});
     const stackSpacing = useBreakpointValue({base: "20px", md: "40px"});
     const sectWidth = useBreakpointValue({base: "100%", md: "50%"});
+    const modalSize = useBreakpointValue({base: "full", md: "90vw"});
+    const modalHeight = useBreakpointValue({base: "", md: "90vh"});
+
+    const navigate = useNavigate();
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const { addSubscription, emptyCart} = useShoppingCart();
+    const subscricao = {
+        id: 999,
+        nome: "Fé no Cafelab",
+        preco: 19.99,
+        imagem: "assets/bundle.png",
+        descricao: "3 embalagens de 200g em grãos ou moídas de acordo com a sua indicação de consumo."
+    };
+
+    function feNoCafelab() {
+        emptyCart();
+        addSubscription(subscricao);
+        navigate('/subscricao/checkout');
+    }
 
     return (
         <SidebarWithHeader>
@@ -17,8 +56,9 @@ const Subscricao = () => {
                     </Text>
                 </Stack>
                 <Stack direction={["column", 'row']} spacing="6" align="center" justify="space-between">
-                    <Stack spacing={stackSpacing} width={sectWidth}>
+                    <Stack spacing={stackSpacing} alignItems={"center"}  width={sectWidth}>
                         <Card height="100%"
+                              maxW='lg'
                               backgroundColor={"#FFFFFF"}>
                             <CardHeader align={"center"}>
                                 <Box my={8}>
@@ -35,8 +75,9 @@ const Subscricao = () => {
                                 <Text align="center">
                                     Para os que nos conhecem, e amam uma surpresa.
                                     <br/>
-                                    Quem já pediu, sabe que uma indicação do nosso especialista nunca falha !
-                                    Receba na sua casa uma coleção de 3 cafés especiais, escolhidos a dedo todos os meses pelo nosso especialista.
+                                    Quem já pediu, sabe que uma indicação do nosso especialista nunca falha!
+                                    <br/>
+                                    Receba na sua casa uma coleção de três cafés especiais, escolhidos a dedo todos os meses pelo nosso especialista.
                                     <br/>
 
                                 </Text>
@@ -54,7 +95,7 @@ const Subscricao = () => {
 
                             <CardFooter alignSelf="center">
                                 <Flex justifyContent="center" alignItems="center">
-                                    <Button leftIcon={<FaHandshake/>} onClick={() => navigate('/cart')} size='lg' height='48px' width='200px' border='2px'
+                                    <Button leftIcon={<FaHandshake/>} onClick={() => feNoCafelab()} size='lg' height='48px' width='200px' border='2px'
                                             variant='outline' colorScheme='#FEEBC8'>
                                         Confio
                                     </Button>
@@ -63,8 +104,9 @@ const Subscricao = () => {
                         </Card>
                     </Stack>
 
-                    <Stack width={sectWidth}>
+                    <Stack width={sectWidth} alignItems={"center"} >
                         <Card height="100%"
+                              maxW='lg'
                               backgroundColor={"#FFFFFF"}>
                             <CardHeader align={"center"}>
                                 <Stack justify="flex-start" align="center" fontSize={"3xl"} spacing="0px">
@@ -78,9 +120,9 @@ const Subscricao = () => {
                                 <Text align="center">
                                     Para os nossos clientes decididos, ou menos aventureiros.
                                     <br/>
-                                    Faça a sua escolha e monte a sua própria subscrição com os cafés que já ama.
+                                    Escolha e monte sua própria subscrição com os cafés que já ama.
                                     <br/>
-                                    Escolha e monte a sua coleção de 3 dos nossos
+                                    Selecione três dos nossos
                                     cafés especiais e receba todos os meses na sua casa, o melhor do Cafelab.
                                     <br/>
                                 </Text>
@@ -95,14 +137,32 @@ const Subscricao = () => {
                                 alt='Chakra UI'
                                 m={6}
                                 boxSize={"80%"}
+                                borderRadius='lg'
                             />
 
                             <CardFooter alignSelf="center">
                                 <Stack alignSelf="center" justifyContent="center">
-                                    <Button leftIcon={<FaHandshake/>} onClick={() => navigate('/agenda')} size='lg' height='48px' border='2px'
+                                    <Button leftIcon={<FaHandshake/>} onClick={onOpen} size='lg' height='48px' border='2px'
                                             variant='outline' colorScheme='#FEEBC8'>
                                         Já sei o meu cafelab
                                     </Button>
+                                    <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}
+                                           motionPreset='slideInBottom' size={modalSize}>
+                                        <ModalOverlay />
+                                        <ModalContent style={{ height: '90vh'}}>
+                                            <ModalHeader>Escolha seus cafés!</ModalHeader>
+                                            <ModalCloseButton />
+                                            <ModalBody pb={6}>
+                                                <ProductsCarousel/>
+                                            </ModalBody>
+                                            <ModalFooter>
+                                                <Button colorScheme='blue' mr={3}>
+                                                    Save
+                                                </Button>
+                                                <Button onClick={onClose}>Cancel</Button>
+                                            </ModalFooter>
+                                        </ModalContent>
+                                    </Modal>
                                 </Stack>
                             </CardFooter>
                         </Card>
@@ -113,6 +173,7 @@ const Subscricao = () => {
             </Stack>
         </SidebarWithHeader>
     );
+
 }
 
 export default Subscricao;

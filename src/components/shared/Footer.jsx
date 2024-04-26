@@ -9,10 +9,10 @@ const Footer = () => {
             <Stack direction={['column', 'row']} spacing="4" align="center" justify="space-between">
 
                 <Stack direction="column" spacing="1">
-                    <Link href="#coffee">Coffee</Link>
-                    <Link href="#about-us">About Us</Link>
-                    <Link href="#location">Location</Link>
-                    <Link href="#contact-us">Contact Us</Link>
+                    <Link href="/boutique">Coffee</Link>
+                    <Link href="/sobre-nos">About Us</Link>
+                    <Link href="https://maps.app.goo.gl/XVfFfdvZ1USq2XjZ7">Location</Link>
+                    <Link href="/contacto">Contact Us</Link>
                 </Stack>
 
                 <Stack direction="row" pl={paddingValue} spacing="4">

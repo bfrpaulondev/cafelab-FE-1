@@ -1,4 +1,4 @@
-import {Box, Card, CardBody, Image, SimpleGrid, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
+import {Card, CardBody, Image, SimpleGrid, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
 
 const OurPicks = () => {
     const stackSpacing = useBreakpointValue({base: "20px", md: "40px"});
@@ -75,12 +75,12 @@ const OurPicks = () => {
                 <Card
                     backgroundColor={"#FFFFFF"}
                 >
-                        <Image
-                            src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
+                    <Image
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
 
-                            className="w-100"
-                            objectFit="fill"
-                        />
+                        className="w-100"
+                        objectFit="fill"
+                    />
                     <a href="#!">
                         <Stack className="mask">
                             <Stack className="d-flex justify-content-start align-items-end h-100">

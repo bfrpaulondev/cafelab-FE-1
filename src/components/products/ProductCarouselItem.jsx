@@ -6,7 +6,7 @@ export default function ProductCarouselItem({id, nome, descricao, origem, varied
     const stackSpacing = useBreakpointValue({base: "20px", md: "40px"});
     const fontHl = useBreakpointValue({base: "6xl", md: "52px"});
     const fontHl2 = useBreakpointValue({base: "xl", md: "2xl"});
-    const sectionHeight = useBreakpointValue({base: "820px", md: "800px"});
+    const sectionHeight = useBreakpointValue({base: "90%", md: "90%"});
     const gridValue = useBreakpointValue({base: "repeat(2, 1fr)", md: "repeat(2, 1fr)"});
 
     const navigate = useNavigate();
@@ -30,10 +30,10 @@ export default function ProductCarouselItem({id, nome, descricao, origem, varied
                                 <Text className="font-oliveAntique text-center" fontSize={fontHl2}>Origem:{origem}</Text>
                             </Stack>
                             <Stack justify="flex-end" maxWidth="100%" mt={5}>
-                                <Text className="font-oliveAntique text-left" fontSize={"xl"}>{descricao}</Text>
+                                <Text className="font-oliveAntique text-left" fontSize={"lg"}>{descricao}</Text>
                             </Stack>
                             <Stack justify="flex-end" maxWidth="100%">
-                                <Text className="font-oliveAntique text-left" fontSize={"xl"}>Variedade: {variedade}</Text>
+                                <Text className="font-oliveAntique text-left" fontSize={"lg"}>Variedade: {variedade}</Text>
                             </Stack>
 
                             <Stack mt={8} align={'center'}>
