@@ -1,10 +1,10 @@
 import process from 'node:process'
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
+import {VitePWA} from 'vite-plugin-pwa'
 
 const pwaOptions = {
-    mode: 'development',
+    mode: 'production',
     base: '/',
     includeAssets: ['favicon.svg'],
     manifest: {
@@ -13,17 +13,22 @@ const pwaOptions = {
         theme_color: '#ffffff',
         icons: [
             {
-                src: 'pwa-192x192.png', // <== don't add slash, for testing
-                sizes: '192x192',
+                src: 'assets/icons/144.png', // path to your 144px icon
+                sizes: '144x144',
                 type: 'image/png',
             },
             {
-                src: '/pwa-512x512.png', // <== don't remove slash, for testing
+                src: 'assets/icons/196.png', // <== don't add slash, for testing
+                sizes: '196x196',
+                type: 'image/png',
+            },
+            {
+                src: '/assets/icons/512.png', // <== don't remove slash, for testing
                 sizes: '512x512',
                 type: 'image/png',
             },
             {
-                src: 'pwa-512x512.png', // <== don't add slash, for testing
+                src: 'assets/icons/512.png', // <== don't add slash, for testing
                 sizes: '512x512',
                 type: 'image/png',
                 purpose: 'any maskable',
@@ -38,7 +43,7 @@ const pwaOptions = {
     },
 }
 
-const replaceOptions = { __DATE__: new Date().toISOString() }
+const replaceOptions = {__DATE__: new Date().toISOString()}
 const claims = process.env.CLAIMS === 'true'
 const reload = process.env.RELOAD_SW === 'true'
 const selfDestroying = process.env.SW_DESTROY === 'true'
@@ -67,11 +72,11 @@ if (selfDestroying)
     pwaOptions.selfDestroying = selfDestroying
 
 export default defineConfig({
-  plugins: [
-      react(),
-    VitePWA(pwaOptions)
-  ],
-  optimizeDeps: {
-    exclude: ['js-big-decimal']
-  }
+    plugins: [
+        react(),
+        VitePWA(pwaOptions)
+    ],
+    optimizeDeps: {
+        exclude: ['js-big-decimal']
+    }
 })
