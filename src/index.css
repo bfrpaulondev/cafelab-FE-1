@@ -88,8 +88,6 @@
 
 
 .agenda-header {
-    width: calc(100% - 2em);
-    height: 200px;
     justify-content: center;
 }
 

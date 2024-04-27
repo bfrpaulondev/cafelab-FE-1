@@ -1,25 +1,52 @@
 import SidebarWithHeader from "../shared/SideBar.jsx";
-import {Spinner, Stack, Text, Wrap, WrapItem} from "@chakra-ui/react";
+import {Box, Spinner, Stack, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import CardWithImage from "./EventCard.jsx";
-import { getEvents } from '../../services/eventService.js';
+import {getEvents, getNextEvents, getPastEvents} from '../../services/eventService.js';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const Agenda = () => {
 
     const [events, setEvents] = useState([]);
+    const [pastEvents, setPastEvents] = useState([]);
     const [loading, setLoading] = useState(false);
     const [err, setError] = useState("");
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: {max: 4000, min: 3000},
+            items: 5
+        },
+        desktop: {
+            breakpoint: {max: 3000, min: 1024},
+            items: 3
+        },
+        tablet: {
+            breakpoint: {max: 1024, min: 464},
+            items: 2
+        },
+        mobile: {
+            breakpoint: {max: 464, min: 0},
+            items: 1
+        }
+    };
 
     useEffect(() => {
         fetchEvents();
     }, [])
 
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     async function fetchEvents() {
         setLoading(true);
         try {
-            const data = await getEvents();
-            console.log("data: ", data);
+            await delay(1000);
+            const data = await getNextEvents(Date.now());
             setEvents(data);
+            const pastData = await getPastEvents(Date.now());
+            setPastEvents(pastData);
         } catch (error) {
             setError(error.message);
         } finally {
@@ -30,13 +57,15 @@ const Agenda = () => {
     if (loading) {
         return (
             <SidebarWithHeader>
-                <Spinner
-                    thickness='4px'
-                    speed='0.65s'
-                    emptyColor='gray.200'
-                    color='blue.500'
-                    size='xl'
-                />
+                <Stack h={"60vh"} align="center" m={6} spacing={4}>
+                    <Spinner
+                        thickness='4px'
+                        speed='0.65s'
+                        emptyColor='gray.200'
+                        color='blue.500'
+                        size='xl'
+                    />
+                </Stack>
             </SidebarWithHeader>
         )
     }
@@ -45,7 +74,9 @@ const Agenda = () => {
         console.log(err)
         return (
             <SidebarWithHeader>
-                <Text mt={5}>err</Text>
+                <Stack h={"60vh"} align="center" m={6} spacing={4}>
+                    <Text mt={5}>err</Text>
+                </Stack>
             </SidebarWithHeader>
         )
     }
@@ -53,7 +84,9 @@ const Agenda = () => {
     if (events.length <= 0) {
         return (
             <SidebarWithHeader>
-                <Text mt={5}>No events available</Text>
+                <Stack h={"60vh"} align="center" m={6} spacing={4}>
+                    <Text mt={5}>No events available</Text>
+                </Stack>
             </SidebarWithHeader>
         )
     }
@@ -61,17 +94,33 @@ const Agenda = () => {
     return (
         <SidebarWithHeader>
             <Stack backgroundColor={"#556560"}>
-                <Stack className={"agenda-header"} m={4}>
+                <Stack className={"agenda-header"} mt={6} my={4}>
                     <Text className={"cafelab"} align={"center"} fontSize="5xl">
-                        Acompanhe nossos eventos</Text>
+                        Próximos eventos</Text>
                 </Stack>
-                <Wrap justify={"center"} spacing={"30px"}>
-                    {events.map((event, index) => (
+                <Stack alignSelf={"center"} w={"90vw"}>
+                    <Carousel  responsive={responsive}>
+                        {events.map((event, index) => (
+                            <Stack key={index}>
+                                <CardWithImage
+                                    {...event}
+                                    imageNumber={index}
+                                    events={events}
+                                />
+                            </Stack>
+                        ))}
+                    </Carousel>
+                </Stack>
+                <Stack className={"agenda-header"} mt={6} my={4}>
+                    <Text className={"cafelab"} align={"center"} fontSize="5xl">
+                        Eventos passados</Text>
+                </Stack>
+                <Wrap justify={"center"}>
+                    {pastEvents.map((event, index) => (
                         <WrapItem key={index}>
                             <CardWithImage
                                 {...event}
                                 imageNumber={index}
-                                events={getEvents}
                             />
                         </WrapItem>
                     ))}

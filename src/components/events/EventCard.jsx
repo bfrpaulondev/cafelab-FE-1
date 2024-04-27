@@ -20,7 +20,7 @@ import {customerProfilePictureUrl, deleteCustomer} from "../../services/client.j
 import {errorNotification, successNotification} from "../../services/notification.js";
 import {FiCalendar, FiPackage} from "react-icons/fi";
 
-export default function CardWithImage({id, date, name, description, local}) {
+export default function CardWithImage({id, date, name, description, local, imageFinish, imagePromotion}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = useRef()
 
@@ -35,16 +35,14 @@ export default function CardWithImage({id, date, name, description, local}) {
                 rounded={'md'}
                 overflow={'hidden'}>
                 <Image
-                    h={'120px'}
+                    h={'250px'}
                     w={'full'}
-                    src={
-                        'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-                    }
+                    src={imagePromotion}
                     objectFit={'cover'}
                 />
 
                 <Box p={6}>
-                    <Stack spacing={2} align={'center'} mb={5}>
+                    <Stack spacing={2} align={'center'} >
                         <Tag borderRadius={"full"}>{date}</Tag>
                         <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
                             {name}
@@ -71,53 +69,8 @@ export default function CardWithImage({id, date, name, description, local}) {
                         >
                             Add to calendar
                         </Button>
-                        <AlertDialog
-                            isOpen={isOpen}
-                            leastDestructiveRef={cancelRef}
-                            onClose={onClose}
-                        >
-                            <AlertDialogOverlay>
-                                <AlertDialogContent>
-                                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-                                        Delete Customer
-                                    </AlertDialogHeader>
-
-                                    <AlertDialogBody>
-                                        Are you sure you want to delete {name}? You can't undo this action afterwards.
-                                    </AlertDialogBody>
-
-                                    <AlertDialogFooter>
-                                        <Button ref={cancelRef} onClick={onClose}>
-                                            Cancel
-                                        </Button>
-                                        <Button colorScheme='red' onClick={() => {
-                                            deleteCustomer(id).then(res => {
-                                                console.log(res)
-                                                successNotification(
-                                                    'Customer deleted',
-                                                    `${name} was successfully deleted`
-                                                )
-                                                fetchCustomers();
-
-                                            }).catch(err => {
-                                                console.log(err);
-                                                errorNotification(
-                                                    err.code,
-                                                    err.response.data.message
-                                                )
-                                            }).finally(() => {
-                                                onClose()
-                                            })
-                                        }} ml={3}>
-                                            Delete
-                                        </Button>
-                                    </AlertDialogFooter>
-                                </AlertDialogContent>
-                            </AlertDialogOverlay>
-                        </AlertDialog>
                         // TODO: Implement google calendar integration
                     </Stack>
-
                 </Stack>
             </Box>
         </Center>

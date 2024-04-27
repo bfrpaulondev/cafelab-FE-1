@@ -18,6 +18,11 @@ const pwaOptions = {
                 type: "image/png",
                 form_factor: "wide"
             },
+            {
+                src: "/assets/screenshots/ss_mobile.png",
+                sizes: "852x1398",
+                type: "image/png",
+            },
         ],
 
         icons: [
@@ -40,7 +45,7 @@ const pwaOptions = {
                 src: 'assets/icons/512.png', // <== don't add slash, for testing
                 sizes: '512x512',
                 type: 'image/png',
-                purpose: 'any maskable',
+                purpose: 'maskable',
             },
         ],
     },
