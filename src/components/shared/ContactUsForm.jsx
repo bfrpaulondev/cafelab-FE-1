@@ -46,23 +46,23 @@ const ContactUsForm = ({onSuccess}) => {
                     <Form>
                         <Stack isInline={true} mb={4}>
                             <MyTextInput
-                                label="Name"
+                                label="Nome"
                                 name="name"
                                 type="text"
-                                placeholder="Jane"
+                                placeholder="Nome"
                             />
 
                             <MyTextInput
-                                label="Email Address"
+                                label="Email"
                                 name="email"
                                 type="email"
-                                placeholder="jane@formik.com"
+                                placeholder="email@exemplo.com"
                             />
                         </Stack>
 
                         <Stack mb={4}>
                             <MyTextInput
-                                label="Phone Number"
+                                label="Telemovel"
                                 name="phone"
                                 type="text"
                                 placeholder="20"
@@ -73,11 +73,11 @@ const ContactUsForm = ({onSuccess}) => {
                                 label="description"
                                 name="description"
                                 type="text"
-                                placeholder={"Tell us about your question"}
+                                placeholder={"Escreva sua dúvida aqui"}
                             />
                         </Stack>
 
-                        <Button disabled={!isValid || isSubmitting} type="submit">Submit</Button>
+                        <Button mt={6} disabled={!isValid || isSubmitting} type="submit">Submit</Button>
                     </Form>)}
             </Formik>
         </>);
