@@ -11,6 +11,15 @@ const pwaOptions = {
         name: 'CAFELAB',
         short_name: 'Cafelab',
         theme_color: '#ffffff',
+        screenshots: [
+            {
+                src: "/assets/screenshots/ss_wide.png",
+                sizes: "2774x1498",
+                type: "image/png",
+                form_factor: "wide"
+            },
+        ],
+
         icons: [
             {
                 src: 'assets/icons/144.png', // path to your 144px icon
