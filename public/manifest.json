@@ -1,7 +1,7 @@
 {
   "name": "Cafelab Store",
   "short_name": "Cafelab",
-  "start_url": "home.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#fdfdfd",
   "theme_color": "#db4938",

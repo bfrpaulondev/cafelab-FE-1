@@ -31,6 +31,7 @@ function ModalQuiz() {
     const [activeQuestion, setActiveQuestion] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = useState('')
     const [showResult, setShowResult] = useState(false)
+    const [firstSlide, setFirstSlide] = useState(true)
     const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null)
     const [results, setResults] = useState([]) // New state variable for results
 
@@ -64,7 +65,27 @@ function ModalQuiz() {
                 backdropFilter='blur(10px) hue-rotate(90deg)'
             />
 
-            { !showResult ? (
+            { firstSlide ? (
+            <ModalContent>
+                <ModalHeader>
+                    <Box as='span'>Novo por aqui?</Box>
+                </ModalHeader>
+                <ModalBody>
+                    <Stack ><Box as='span'>
+                        Para te ajudar temos um quiz para descobrir o melhor café para você! O que acha?
+                    </Box>
+                    </Stack>
+                </ModalBody>
+                <ModalFooter>
+                    <Button  mr={3} onClick={onClose}>
+                        Agora não...
+                    </Button>
+                    <Button colorScheme='blue' onClick={() => setFirstSlide(false)}>
+                        Vamos lá!
+                    </Button>
+                </ModalFooter>
+            </ModalContent>
+            ) : !showResult ? (
                 <ModalContent>
                     <ModalHeader>
                         <Box as='span' className="active-question-no">{addLeadingZero(activeQuestion + 1)}</Box>

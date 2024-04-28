@@ -36,9 +36,13 @@ export function ShoppingCartProvider({children}) {
     function getItemQuantity(id) {
         return cartItems.find(item => item.id === id)?.quantity || 0
     }
-    function emptyCart() {
-        setCartItems([]);
-        setSubscription([]);
+    function emptyCart(justCart) {
+        if (justCart) {
+            setCartItems([]);
+        } else {
+            setCartItems([]);
+            setSubscription([]);
+        }
     }
 
     function increaseCartQuantity(id) {
@@ -57,8 +61,19 @@ export function ShoppingCartProvider({children}) {
         })
     }
 
-    function addSubscription(subscription) {
-        setSubscription(subscription)
+    function addSubscription(incoming) {
+        setSubscription(currItems => {
+            const existingItem = currItems.find(item => item.id === incoming.id);
+
+            if (existingItem == null) {
+                // If the incoming item does not exist in the array, add it
+                return [...currItems, incoming];
+            } else {
+                // If the incoming item already exists in the array, ignore it
+                return currItems;
+            }
+        })
+        console.log(subscription);
     }
 
     function decreaseCartQuantity(id) {

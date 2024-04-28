@@ -8,7 +8,11 @@ import {
     CardHeader,
     Flex,
     Image,
-    Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalHeader,
     ModalOverlay,
     Stack,
     Text,
@@ -19,6 +23,10 @@ import {FaHandshake} from "react-icons/fa";
 import {useShoppingCart} from "../context/ShoppingCartContext.jsx";
 import {useNavigate} from "react-router-dom";
 import ProductsCarousel from "../products/ProductsCarousel.jsx";
+import React from "react";
+import {SubscriptionProvider} from "../context/SubscriptionContext.jsx";
+import ModalKit from "./ModalKit.jsx";
+import ModalQuiz from "./ModalQuiz.jsx";
 
 const Subscricao = () => {
 
@@ -30,9 +38,9 @@ const Subscricao = () => {
 
     const navigate = useNavigate();
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const {isOpen, onOpen, onClose} = useDisclosure()
 
-    const { addSubscription, emptyCart} = useShoppingCart();
+    const {addSubscription, emptyCart} = useShoppingCart();
     const subscricao = {
         id: 999,
         nome: "Fé no Cafelab",
@@ -42,23 +50,64 @@ const Subscricao = () => {
     };
 
     function feNoCafelab() {
-        emptyCart();
+        emptyCart(true);
         addSubscription(subscricao);
         navigate('/subscricao/checkout');
     }
 
     return (
         <SidebarWithHeader>
-            <Stack backgroundColor={"#81938c"} p={10}>
+            <Stack backgroundColor={"#81938c"} p={8}>
                 <Stack justify="flex-start" align="center" my={6} mx={4} spacing="24px">
                     <Text className="font-oliveAntique" align="center" fontWeight="extrabold" fontSize={fontSize} letterSpacing="-0.08em" color="#000000">
                         SUBSCRIÇÃO CAFELAB
                     </Text>
                 </Stack>
+
+                <Stack alignItems={"center"} width={"100%"}>
+                    <Card height="100%"
+                          maxW='100%'
+                          backgroundColor={"#FFFFFF"}>
+                        <CardBody mx={8}>
+                            <Stack direction={"row"}>
+                                <Stack maxHeight={"100px"}>
+                                    <Image
+                                        alignSelf="center"
+                                        objectFit='cover'
+                                        src='assets/bundle.png'
+                                        alt='Chakra UI'
+                                        m={6}
+                                        boxSize={"100%"}
+                                        borderRadius='lg'
+                                    />
+                                </Stack>
+                                <Stack>
+                                    <Stack justify="flex-center" align="center" fontSize={"3xl"} spacing="0px">
+                                        <Text className="font-oliveAntique" fontWeight="extrabold" letterSpacing="-0.08em" color="#000000">
+                                            Kit Experiência Cafelab
+                                        </Text>
+                                    </Stack>
+                                    <Text align="center">
+                                        Para os nossos clientes decididos, ou menos aventureiros.
+                                        <br/>
+                                        Escolha e monte sua própria subscrição com os cafés que já ama.
+                                        <br/>
+                                        Selecione três dos nossos
+                                        cafés especiais e receba todos os meses na sua casa, o melhor do Cafelab.
+                                        <br/>
+                                    </Text>
+                                    <Text align="center" fontSize={"xs"} mt={6}>
+                                        8 embalagens de 13 em grãos ou moídas<br/> de acordo com a sua indicação de consumo.
+                                    </Text>
+                                </Stack>
+                            </Stack>
+                        </CardBody>
+                    </Card>
+                </Stack>
                 <Stack direction={["column", 'row']} spacing="6" align="center" justify="space-between">
-                    <Stack spacing={stackSpacing} alignItems={"center"}  width={sectWidth}>
+                    <Stack spacing={stackSpacing} alignItems={"center"} width={sectWidth}>
                         <Card height="100%"
-                              maxW='lg'
+                              maxW='2xl'
                               backgroundColor={"#FFFFFF"}>
                             <CardHeader align={"center"}>
                                 <Box my={8}>
@@ -103,10 +152,9 @@ const Subscricao = () => {
                             </CardFooter>
                         </Card>
                     </Stack>
-
-                    <Stack width={sectWidth} alignItems={"center"} >
+                    <Stack width={sectWidth} alignItems={"center"}>
                         <Card height="100%"
-                              maxW='lg'
+                              maxW='2xl'
                               backgroundColor={"#FFFFFF"}>
                             <CardHeader align={"center"}>
                                 <Stack justify="flex-start" align="center" fontSize={"3xl"} spacing="0px">
@@ -148,27 +196,24 @@ const Subscricao = () => {
                                     </Button>
                                     <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}
                                            motionPreset='slideInBottom' size={modalSize}>
-                                        <ModalOverlay />
-                                        <ModalContent style={{ height: '90vh'}}>
+                                        <ModalOverlay/>
+                                        <ModalContent>
                                             <ModalHeader>Escolha seus cafés!</ModalHeader>
-                                            <ModalCloseButton />
-                                            <ModalBody pb={6}>
-                                                <ProductsCarousel/>
+                                            <ModalCloseButton/>
+                                            <ModalBody>
+                                                <SubscriptionProvider>
+                                                    <ProductsCarousel/>
+                                                </SubscriptionProvider>
                                             </ModalBody>
-                                            <ModalFooter>
-                                                <Button colorScheme='blue' mr={3}>
-                                                    Save
-                                                </Button>
-                                                <Button onClick={onClose}>Cancel</Button>
-                                            </ModalFooter>
                                         </ModalContent>
                                     </Modal>
                                 </Stack>
                             </CardFooter>
                         </Card>
                     </Stack>
-                </Stack>
 
+                </Stack>
+                <ModalQuiz/>
 
             </Stack>
         </SidebarWithHeader>
