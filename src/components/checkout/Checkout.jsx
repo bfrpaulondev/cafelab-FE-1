@@ -60,13 +60,13 @@ export default function Checkout() {
                 return total + (item?.preco || 0) * cartItem.quantity
             }, 0);
 
-
             const order = {
-                user: {name: "Jose Carlos", morada: "av 1", NIF: "123456789"},
-                items: subscription ? subscription : cartItems,
+                user_id: 1,
+                items: subscription.length > 0 ? subscription : cartItems,
                 total: total,
                 paymentStatus: "PENDING"
             }
+            console.log(order);
             if (total === 0) return;
             const dbOrder = addOrder(order);
 

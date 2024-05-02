@@ -40,3 +40,12 @@ export const getProductsBySection = async (section) => {
         throw e;
     }
 }
+
+export const getProductsById = async (id) => {
+    try {
+        const products = await getProducts();
+        return products.filter(product => product.id === id);
+    } catch (e) {
+        throw e;
+    }
+}

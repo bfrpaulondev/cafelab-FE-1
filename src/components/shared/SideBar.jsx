@@ -1,31 +1,31 @@
 import React from 'react';
 import {
-    AbsoluteCenter,
+    AbsoluteCenter, Avatar,
     Box,
     CloseButton,
     Drawer,
     DrawerContent,
-    Flex,
+    Flex, HStack,
     Icon,
     IconButton,
     Image,
     Link,
     Text,
     useColorModeValue,
-    useDisclosure
+    useDisclosure, VStack
 } from '@chakra-ui/react';
 
 import {useNavigate} from 'react-router-dom';
 
-import {FiCalendar, FiHome, FiMail, FiMenu, FiPackage, FiSettings} from 'react-icons/fi';
+import {FiCalendar, FiHome, FiMail, FiMenu, FiPackage} from 'react-icons/fi';
 
 import {MdCoffee} from 'react-icons/md';
-import {GrContact} from 'react-icons/gr';
 import Footer from "./Footer.jsx";
-import {FaShoppingCart} from "react-icons/fa";
+import {FaShoppingCart, FaSignInAlt, FaSignOutAlt} from "react-icons/fa";
 import {useShoppingCart} from "../context/ShoppingCartContext.jsx";
 import {Stack} from "react-bootstrap";
 import {FaA} from "react-icons/fa6";
+import {useAuth} from "../context/AuthContext.jsx";
 
 const LinkItems = [
     {name: 'Home', route: '/', icon: FiHome},
@@ -65,25 +65,63 @@ export default function SidebarWithHeader({children}) {
 
 const SidebarContent = ({onClose}) => {
     const navigate = useNavigate();
+    const {customer, logOut} = useAuth();
     return (
-        <Flex h="20" flexDirection="column" alignItems="center" mx="8" mb={75} mt={10} justifyContent="space-between">
-            <CloseButton mb={4} onClick={onClose}/>
-            <Image
-                borderRadius='full'
-                boxSize='75px'
-                src='assets/CafeLabLogo.png'
-                alt='CAfeLab'
-                onClick={() => navigate('/')}
-            />
-            <Text className={"cafelab"} mb={10} fontSize="3xl">
-                CAFELAB
-            </Text>
-            {LinkItems.map((link) => (
-                <NavItem key={link.name} route={link.route} icon={link.icon}>
-                    {link.name}
-                </NavItem>
-            ))}
-        </Flex>
+        <>
+            <Flex h="20" flexDirection="column" alignItems="center" mx="8" mb={75} mt={10} justifyContent="space-between">
+                <CloseButton mb={4} onClick={onClose}/>
+                <Image
+                    borderRadius='full'
+                    boxSize='75px'
+                    src='assets/CafeLabLogo.png'
+                    alt='CAfeLab'
+                    onClick={() => navigate('/')}
+                />
+                <Text className={"cafelab"} mb={10} fontSize="3xl">
+                    CAFELAB
+                </Text>
+                {LinkItems.map((link) => (
+                    <NavItem key={link.name} route={link.route} icon={link.icon}>
+                        {link.name}
+                    </NavItem>
+                ))}
+                {customer ?
+                    <HStack
+                        onClick={() => navigate('/login')}>
+                        <Avatar
+                            size={'sm'}
+                            src={
+                                'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                            }
+                        />
+                        <VStack
+                            display={{base: 'none', md: 'flex'}}
+                            alignItems="flex-start"
+                            spacing="1px"
+                            ml="2">
+                        </VStack>
+                        <Box display={{base: 'none', md: 'flex'}}>
+                            <IconButton
+                                icon={<FaSignOutAlt/>}
+                                onClick={logOut} aria-label={"logout"}>
+                                Sign out
+                            </IconButton>
+                        </Box>
+                    </HStack>
+                    :
+                <Stack direction={"horizontal"} width={"100%"} alignSelf={"center"} >
+                    Login
+                    <IconButton
+                        size="lg"
+                        variant="ghost"
+                        aria-label="log in"
+                        icon={<FaSignInAlt/>}
+                        onClick={() => navigate('/login')}
+                    />
+                </Stack>
+                }
+            </Flex>
+        </>
     );
 };
 
@@ -156,20 +194,20 @@ const MobileNav = ({onOpen, ...rest}) => {
                 icon={<FaShoppingCart/>}
                 onClick={openCart}
             >
-            <Stack
-                className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
-                style={{
-                    color: "white",
-                    width: "1.5rem",
-                    height: "1.5rem",
-                    position: "absolute",
-                    bottom: 0,
-                    right: 0,
-                    transform: "translate(25%, 25%)",
-                }}
-            >
-                {cartQuantity}
-            </Stack>
+                <Stack
+                    className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                    style={{
+                        color: "white",
+                        width: "1.5rem",
+                        height: "1.5rem",
+                        position: "absolute",
+                        bottom: 0,
+                        right: 0,
+                        transform: "translate(25%, 25%)",
+                    }}
+                >
+                    {cartQuantity}
+                </Stack>
             </IconButton>
         </Flex>
     );

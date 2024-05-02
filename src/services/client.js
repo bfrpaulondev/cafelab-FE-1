@@ -1,4 +1,23 @@
 import axios from 'axios';
+import SupabaseClientUtil from "../components/utilities/SupabaseClientUtil.jsx";
+
+const supabase = SupabaseClientUtil.supabaseClient
+
+export const signin = async (usernameAndPassword) => {
+    console.log(usernameAndPassword)
+    try {
+        return await supabase.auth.signInWithPassword({
+            email: usernameAndPassword.username,
+            password: usernameAndPassword.password,
+        })
+        //await axios.post(
+        //    `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login`,
+        //    usernameAndPassword
+        //)
+    } catch (e) {
+        throw e;
+    }
+}
 
 const getAuthConfig = () => ({
     headers: {
@@ -17,7 +36,7 @@ export const getCustomers = async () => {
     }
 }
 
-export const saveCustomer = async (customer) => {
+/*export const saveCustomer = async (customer) => {
     try {
         return await axios.post(
             `${import.meta.env.VITE_API_BASE_URL}/api/v1/customers`,
@@ -25,6 +44,27 @@ export const saveCustomer = async (customer) => {
         )
     } catch (e) {
         throw e;
+    }
+}*/
+
+export const saveCustomer = async (customer) => {
+    console.log("save customer: " + customer)
+    try {
+        const { data, error } = await supabase.auth.signUp({
+            email: customer.email,
+            password: customer.password,
+            options:{
+                data: {
+                    name: customer.name,
+                    age: customer.age,
+                    gender: customer.gender,
+                },
+            },
+        });
+        if (error) throw error;
+        return data;
+    } catch (error) {
+        console.error("Error creating user: ", error.message);
     }
 }
 
@@ -51,7 +91,7 @@ export const deleteCustomer = async (id) => {
     }
 }
 
-export const login = async (usernameAndPassword) => {
+/*export const signin = async (usernameAndPassword) => {
     try {
         return await axios.post(
             `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login`,
@@ -60,7 +100,7 @@ export const login = async (usernameAndPassword) => {
     } catch (e) {
         throw e;
     }
-}
+}*/
 
 export const uploadCustomerProfilePicture = async (id, formData) => {
     try {

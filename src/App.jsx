@@ -1,13 +1,9 @@
 import {BrowserRouter, createBrowserRouter, Route, Routes} from "react-router-dom"
-import {Container} from "react-bootstrap"
 import {ShoppingCartProvider} from "./components/context/ShoppingCartContext.jsx";
 import {createStandaloneToast} from "@chakra-ui/toast";
 import Login from "./components/login/Login.jsx";
 import Signup from "./components/signup/Signup.jsx";
 import Agenda from "./components/events/Agenda.jsx";
-import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
-import Dashboard from "./Dashboard.jsx";
-import Customer from "./Customer.jsx";
 import Menu from "./Menu.jsx";
 import Subscricao from "./components/subscricao/Subscricao.jsx";
 import {ShoppingCart} from "./components/cart/ShoppingCart.jsx";
@@ -16,7 +12,6 @@ import Boutique from "./components/products/Boutique.jsx";
 import FeNoCafeLab from "./components/subscricao/FeNoCafeLab.jsx";
 import Checkout from "./components/checkout/Checkout.jsx";
 import React from "react";
-import SidebarWithHeader from "./components/shared/SideBar.jsx";
 import Home from "./Home.jsx";
 import {ErrorBoundary} from "react-error-boundary";
 import {ErrorBoundaryComponent} from "./components/errors/ErrorBoundaryComponent.jsx";
@@ -27,6 +22,9 @@ import ErrorPage from "./components/errors/ErrorPage.jsx";
 import AboutUs from "./AboutUs.jsx";
 import Refunds from "./Refunds.jsx";
 import {ChakraProvider} from "@chakra-ui/react";
+import AuthProvider from "./components/context/AuthContext.jsx";
+import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
+import Orders from "./components/orders/MyOrders.jsx";
 
 
 const {ToastContainer} = createStandaloneToast();
@@ -112,6 +110,12 @@ const router = createBrowserRouter([
         path: "/reembolso",
         element: <Refunds/>
     },
+    {
+        path: "/orders",
+        element: (
+            <ProtectedRoute><Orders /></ProtectedRoute>
+        )
+    },
 ])
 
 function App() {
@@ -119,13 +123,15 @@ function App() {
         <ChakraProvider>
             <ErrorBoundary FallbackComponent={ErrorBoundaryComponent}>
                 <BrowserRouter>
-                    <ShoppingCartProvider>
-                        <Routes>
-                            {router.routes.map((route, index) => (
-                                <Route key={index} path={route.path} element={route.element}/>
-                            ))}
-                        </Routes>
-                    </ShoppingCartProvider>
+                    <AuthProvider>
+                        <ShoppingCartProvider>
+                            <Routes>
+                                {router.routes.map((route, index) => (
+                                    <Route key={index} path={route.path} element={route.element}/>
+                                ))}
+                            </Routes>
+                        </ShoppingCartProvider>
+                    </AuthProvider>
                     <ToastContainer/>
                 </BrowserRouter>
             </ErrorBoundary>

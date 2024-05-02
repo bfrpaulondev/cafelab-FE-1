@@ -1,15 +1,10 @@
-import {
-    createContext,
-    useContext,
-    useEffect,
-    useState
-} from "react";
-import {getCustomers, login as performLogin} from "../../services/client.js";
+import {createContext, useContext, useEffect, useState} from "react";
+import {signin as performLogin} from "../../services/client.js";
 import jwtDecode from "jwt-decode";
 
 const AuthContext = createContext({});
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({children}) => {
 
     const [customer, setCustomer] = useState(null);
 
@@ -18,27 +13,33 @@ const AuthProvider = ({ children }) => {
         if (token) {
             token = jwtDecode(token);
             setCustomer({
-                username: token.sub,
+                username: token.email,
                 roles: token.scopes
             })
+            console.log(customer);
         }
     }
     useEffect(() => {
-        setCustomerFromToken()
-    }, [])
+        const token = localStorage.getItem("access_token");
+        if (token) {
+            setCustomerFromToken();
+        }
+    }, [localStorage.getItem("access_token")]); // Add this line
 
 
-    const login = async (usernameAndPassword) => {
+    const signin = async (usernameAndPassword) => {
         return new Promise((resolve, reject) => {
             performLogin(usernameAndPassword).then(res => {
-                const jwtToken = res.headers["authorization"];
+
+                const jwtToken = res.data.session.access_token;
                 localStorage.setItem("access_token", jwtToken);
 
                 const decodedToken = jwtDecode(jwtToken);
+                console.log(decodedToken);
 
                 setCustomer({
-                    username: decodedToken.sub,
-                    roles: decodedToken.scopes
+                    username: decodedToken.email,
+                    roles: decodedToken.roles
                 })
                 resolve(res);
             }).catch(err => {
@@ -57,7 +58,7 @@ const AuthProvider = ({ children }) => {
         if (!token) {
             return false;
         }
-        const { exp: expiration } = jwtDecode(token);
+        const {exp: expiration} = jwtDecode(token);
         if (Date.now() > expiration * 1000) {
             logOut()
             return false;
@@ -68,7 +69,7 @@ const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={{
             customer,
-            login,
+            signin,
             logOut,
             isCustomerAuthenticated,
             setCustomerFromToken
@@ -78,6 +79,8 @@ const AuthProvider = ({ children }) => {
     )
 }
 
-export const useAuth = () => useContext(AuthContext);
+export function useAuth() {
+    return useContext(AuthContext)
+}
 
 export default AuthProvider;

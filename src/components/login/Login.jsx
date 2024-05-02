@@ -26,7 +26,7 @@ const MyTextInput = ({label, ...props}) => {
 };
 
 const LoginForm = () => {
-    const {login} = useAuth();
+    const {signin} = useAuth();
     const navigate = useNavigate();
 
     return (
@@ -45,8 +45,8 @@ const LoginForm = () => {
             initialValues={{username: '', password: ''}}
             onSubmit={(values, {setSubmitting}) => {
                 setSubmitting(true);
-                login(values).then(res => {
-                    navigate("/dashboard")
+                signin(values).then(res => {
+                    navigate("/orders")
                     console.log("Successfully logged in");
                 }).catch(err => {
                     errorNotification(

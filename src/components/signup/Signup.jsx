@@ -10,7 +10,7 @@ const Signup = () => {
 
     useEffect(() => {
         if (customer) {
-            navigate("/dashboard/customers");
+            navigate("/orders");
         }
     })
 
@@ -34,7 +34,7 @@ const Signup = () => {
                     <CreateCustomerForm onSuccess={(token) => {
                         localStorage.setItem("access_token", token)
                         setCustomerFromToken()
-                        navigate("/dashboard");
+                        navigate("/orders");
                     }}/>
                     <Link color={"blue.500"} href={"/login"}>
                         Have an account? Login now.

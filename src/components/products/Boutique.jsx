@@ -44,7 +44,7 @@ export default function Boutique() {
                               fontSize={fontTitleSize} letterSpacing="-0.08em"
                               style={{ WebkitTextStroke: "3px white" }}
                               color="#000000">
-                            BOUTIQUE CAFELAB
+                            CAFELAB BOUTIQUE
                         </Text>
                     </Stack>
                 </Stack>

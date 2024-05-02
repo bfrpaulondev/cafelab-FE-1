@@ -3,6 +3,9 @@ import * as Yup from 'yup';
 import {Alert, AlertIcon, Box, Button, FormLabel, Input, Select, Stack} from "@chakra-ui/react";
 import {saveCustomer} from "../../services/client.js";
 import {successNotification, errorNotification} from "../../services/notification.js";
+import {useNavigate} from "react-router-dom";
+import {useState} from "react";
+import * as PropTypes from "prop-types";
 
 const MyTextInput = ({label, ...props}) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -39,15 +42,29 @@ const MySelect = ({label, ...props}) => {
     );
 };
 
+function SignupSuccess(props) {
+    return null;
+}
+
+SignupSuccess.propTypes = {
+    onClose: PropTypes.func,
+    isOpen: PropTypes.bool
+};
 // And now we can use these
 const CreateCustomerForm = ({ onSuccess }) => {
+    const navigate = useNavigate();
+    const [isSignupSuccessOpen, setIsSignupSuccessOpen] = useState(false);
+
+    const handleSignupSuccessClose = () => {
+        setIsSignupSuccessOpen(false);
+    };
     return (
         <>
             <Formik
                 initialValues={{
                     name: '',
                     email: '',
-                    age: 0,
+                    age: '',
                     gender: '',
                     password: ''
                 }}
@@ -63,8 +80,7 @@ const CreateCustomerForm = ({ onSuccess }) => {
                         .max(100, 'Must be less than 100 years of age')
                         .required(),
                     password: Yup.string()
-                        .min(4, 'Must be 4 characters or more')
-                        .max(15, 'Must be 15 characters or less')
+                        .min(6, 'Must be 4 characters or more')
                         .required('Required'),
                     gender: Yup.string()
                         .oneOf(
@@ -78,11 +94,7 @@ const CreateCustomerForm = ({ onSuccess }) => {
                     saveCustomer(customer)
                         .then(res => {
                             console.log(res);
-                            successNotification(
-                                "Customer saved",
-                                `${customer.name} was successfully saved`
-                            )
-                            onSuccess(res.headers["authorization"]);
+                            setIsSignupSuccessOpen(true);
                         }).catch(err => {
                             console.log(err);
                             errorNotification(
@@ -91,6 +103,7 @@ const CreateCustomerForm = ({ onSuccess }) => {
                             )
                     }).finally(() => {
                          setSubmitting(false);
+                         navigate("/");
                     })
                 }}
             >
@@ -136,6 +149,7 @@ const CreateCustomerForm = ({ onSuccess }) => {
                     </Form>
                 )}
             </Formik>
+            <SignupSuccess isOpen={isSignupSuccessOpen} onClose={handleSignupSuccessClose} />
         </>
     );
 };

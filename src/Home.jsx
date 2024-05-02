@@ -105,15 +105,14 @@ const Home = () => {
                                 NOVO!
                             </div>
                             <Stack justify="flex-end" maxWidth="100%" mt={4} paddingBottom={"30px"}>
-                                <Text className="font-oliveAntique text-center" fontSize={fontHl3}>MENU DE VERÃO</Text>
-                                <Text className="font-oliveAntique text-center mb-5" fontSize={fontSizeMenu}>CAFELAB</Text>
+                                <Text className="font-oliveAntique text-center" fontSize={fontHl3}>MENU PRIMAVERA</Text>
 
 
                                 <Box width="100%" height="80%"  minHeight={"500px"} display="flex" justifyContent="center" alignItems="center">
                                     <Image src="/assets/summerdinrk.jpeg" alt="terrace" boxSize={sectWidth}  objectFit="fill" />
                                 </Box>
                                 <Stack justify="flex-end" maxWidth="100%" mt={sectionPadding}>
-                                    <Text className="font-oliveAntique text-center" fontSize={"xl"}>Drinks refrescantes para o verão</Text>
+                                    <Text className="font-oliveAntique text-center" fontSize={"xl"}>Drinks refrescantes para a primavera</Text>
                                 </Stack>
                                 <Stack my={8} align={'center'}>
                                     <Button leftIcon={<FiBook/>} onClick={() => navigate('/menu')} size='lg' height='48px' width='200px' border='2px'
@@ -133,8 +132,7 @@ const Home = () => {
                     <Stack direction={["column", 'row']} mt={10} p={4}>
                         <Stack width={sectWidth}>
                             <Stack justify="flex-end" maxWidth="100%" mt={4}>
-                                <Text className="font-oliveAntique text-center" fontSize={fontHl2}>CALENDARIO CULTURAL</Text>
-                                <Text className="font-oliveAntique text-center mb-5" fontSize={fontHl}>CAFELAB</Text>
+                                <Text className="font-oliveAntique text-center" fontSize={fontHl2}>CALENDÁRIO CULTURAL</Text>
                             </Stack>
                             <Stack justify="flex-end" maxWidth="100%" mt={sectionPadding}>
                                 <Text className="font-oliveAntique text-center" fontSize={"xl"}>Descubra nossos projetos e eventos</Text>
