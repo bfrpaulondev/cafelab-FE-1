@@ -32,7 +32,7 @@ function SignupSuccess({ isOpen, onClose }) {
                 </ModalHeader>
                 <ModalBody>
                     <Stack maxWidth={"50%"} mx={"auto"} mb={10}>
-                        <Text className="font-oliveAntique text-center" fontSize={useBreakpointValue({base: "lg", md: "2xl"})}></Text>
+                        <Text className="font-headline text-center" fontSize={useBreakpointValue({base: "lg", md: "2xl"})}></Text>
                         <Lottie options={{animationData}} />
                     </Stack>
                 </ModalBody>

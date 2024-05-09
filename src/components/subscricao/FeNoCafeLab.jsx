@@ -13,13 +13,13 @@ const FeNoCafeLab = () => {
     return (
         <SidebarWithHeader>
             <Stack justify="flex-start" align="center" spacing="24px">
-                <Text className="font-oliveAntique" align="center" fontWeight="extrabold" fontSize={fontSize} letterSpacing="-0.08em" color="#000000">
+                <Text className="font-headline" align="center" fontWeight="extrabold" fontSize={fontSize} letterSpacing="-0.08em" color="#000000">
                     Subscrição Fé no CafeLab
                 </Text>
             </Stack>
 
             <Stack justify="flex-start" align="center" spacing="24px">
-                <Text className="font-oliveAntique" fontWeight="extrabold" fontSize={fontSize2} letterSpacing="-0.08em" color="#000000">
+                <Text className="font-headline" fontWeight="extrabold" fontSize={fontSize2} letterSpacing="-0.08em" color="#000000">
 
                     <Stack direction={['row']} spacing="4" align="center" justify="space-between">
                         <Text>0/3</Text> <FaBoxOpen /><FaBoxOpen /><FaBoxOpen />

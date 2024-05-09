@@ -4,7 +4,7 @@ const OurPicks = () => {
     const stackSpacing = useBreakpointValue({base: "20px", md: "40px"});
     return (
         <Stack fluid className="my-5 text-center">
-            <Text className="font-oliveAntique text-center" fontSize={stackSpacing}>Nossos favoritos</Text>
+            <Text className="font-headline text-center" fontSize={stackSpacing}>Nossos favoritos</Text>
             /* TODO: fix image borders to fit in the card */
             <SimpleGrid spacing={4} mb={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
                 <Card

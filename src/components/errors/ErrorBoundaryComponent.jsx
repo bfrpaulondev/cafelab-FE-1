@@ -18,7 +18,7 @@ export function ErrorBoundaryComponent({ error, resetErrorBoundary }) {
                     </CardHeader>
                     <CardBody>
                         <Stack maxWidth={"50%"} mx={"auto"} mb={10}>
-                            <Text className="font-oliveAntique text-center" fontSize={useBreakpointValue({base: "lg", md: "2xl"})}>{error.message}</Text>
+                            <Text className="font-headline text-center" fontSize={useBreakpointValue({base: "lg", md: "2xl"})}>{error.message}</Text>
                             <Lottie options={{animationData}}/>
                         </Stack>
                     </CardBody>

@@ -10,7 +10,7 @@
     url("/fonts/Antique-Olive-Compact-Regular.ttf") format("truetype");
 }
 
-.font-oliveAntique {
+.font-headline {
     font-family: "OliveAntique";
     font-weight: 400;
     font-style: normal;
@@ -66,7 +66,7 @@
     top: 0;
     right: 10%;
     padding: 30px;
-    background-color: #556560;
+    background-color: #000000;
     color: #fff;
     border-radius: 10px;
     font-size: 20px;
@@ -78,10 +78,10 @@
     position: absolute;
     top: 0;
     left: -5%;
-    background-color: #343131;
+    background-color: #000000;
     color: #fff;
-    border-radius: 10px;
-    font-size: 20px;
+    border-radius: 20px;
+    font-size: 33px;
     transform: rotate(335deg);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }

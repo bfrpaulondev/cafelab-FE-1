@@ -25,7 +25,7 @@ const ProductList = ({ products }) => {
                                 <Card width='sm' bgColor={"AppWorkspace"}>
                                     <CardBody>
                                         <Stack mt='6' spacing='8'>
-                                            <Text className="font-oliveAntique text-center" fontSize={fontHl3}>{product.nome}</Text>
+                                            <Text className="font-headline text-center" fontSize={fontHl3}>{product.nome}</Text>
                                             <Box
                                                 align='center'
                                             >

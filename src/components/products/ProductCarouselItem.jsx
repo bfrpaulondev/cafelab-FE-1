@@ -15,6 +15,7 @@ export default function ProductCarouselItem({id, nome, descricao, origem, varied
     const gridValue = useBreakpointValue({base: "1fr", md: "repeat(2, 1fr)"});
 
     const navigate = useNavigate();
+    const gridTemplateColumns = useBreakpointValue({ base: "1fr", md: "repeat(2, 1fr)" });
 
     const {
         getCoffeeQuantity,
@@ -28,7 +29,8 @@ export default function ProductCarouselItem({id, nome, descricao, origem, varied
 
     useEffect(() => {
         setCoffeeQuantity(getCoffeeQuantity(nome));
-    }, [nome]);
+    }, [getCoffeeQuantity, nome]);
+
     return (
         <Box className={id === 1 ? "carousel-item active" : "carousel-item"}>
             <Stack mb={8} align={'center'}>
@@ -64,8 +66,8 @@ export default function ProductCarouselItem({id, nome, descricao, origem, varied
 
                         <GridItem rowSpan={1}>
                             <Stack justify="flex-end" maxWidth="100%" mt={4}>
-                                <Text className="font-oliveAntique text-center" fontSize={fontHl}>{nome}</Text>
-                                <Text className="font-oliveAntique text-center" fontSize={fontHl2}>Origem:{origem}</Text>
+                                <Text className="font-headline text-center" fontSize={fontHl}>{nome}</Text>
+                                <Text className="font-headline text-center" fontSize={fontHl2}>Origem:{origem}</Text>
                             </Stack>
                             <Stack justify="flex-end" maxWidth="100%" mt={5}>
                                 <Text className="roboto  text-left" fontWeight={"bold"} fontSize={fontContent}>{descricao}</Text>

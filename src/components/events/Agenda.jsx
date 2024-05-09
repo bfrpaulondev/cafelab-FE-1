@@ -1,8 +1,8 @@
 import SidebarWithHeader from "../shared/SideBar.jsx";
-import {Box, Spinner, Stack, Text, Wrap, WrapItem} from "@chakra-ui/react";
+import {Spinner, Stack, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import CardWithImage from "./EventCard.jsx";
-import {getEvents, getNextEvents, getPastEvents} from '../../services/eventService.js';
+import {getNextEvents, getPastEvents} from '../../services/eventService.js';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -99,8 +99,22 @@ const Agenda = () => {
                         Próximos eventos</Text>
                 </Stack>
                 <Stack alignSelf={"center"} w={"90vw"}>
-                    <Carousel  responsive={responsive}>
+                    <Wrap justify={"center"}>
                         {events.map((event, index) => (
+                            <WrapItem key={index}>
+                                <CardWithImage
+                                    {...event}
+                                    imageNumber={index}
+                                />
+                            </WrapItem>
+                        ))}
+                    </Wrap>
+                    <Stack className={"agenda-header"} mt={6} my={4}>
+                        <Text className={"cafelab"} align={"center"} fontSize="5xl">
+                            Eventos passados</Text>
+                    </Stack>
+                    <Carousel responsive={responsive}>
+                        {pastEvents.map((event, index) => (
                             <Stack key={index}>
                                 <CardWithImage
                                     {...event}
@@ -111,20 +125,6 @@ const Agenda = () => {
                         ))}
                     </Carousel>
                 </Stack>
-                <Stack className={"agenda-header"} mt={6} my={4}>
-                    <Text className={"cafelab"} align={"center"} fontSize="5xl">
-                        Eventos passados</Text>
-                </Stack>
-                <Wrap justify={"center"}>
-                    {pastEvents.map((event, index) => (
-                        <WrapItem key={index}>
-                            <CardWithImage
-                                {...event}
-                                imageNumber={index}
-                            />
-                        </WrapItem>
-                    ))}
-                </Wrap>
             </Stack>
         </SidebarWithHeader>
     )

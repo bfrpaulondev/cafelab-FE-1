@@ -40,7 +40,7 @@ export default function Boutique() {
 
                 <Stack align={"center"} maxWidth="100%" mb={10} ml={useBreakpointValue({md: 20})}>
                     <Stack alignSelf="stretch" direction={['column', 'row']}  justify="center" align="center" spacing="12px" >
-                        <Text className="font-oliveAntique" align="center" fontWeight="extrabold"
+                        <Text className="font-headline" align="center" fontWeight="extrabold"
                               fontSize={fontTitleSize} letterSpacing="-0.08em"
                               style={{ WebkitTextStroke: "3px white" }}
                               color="#000000">

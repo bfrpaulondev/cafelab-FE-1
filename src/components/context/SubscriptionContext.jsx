@@ -27,6 +27,9 @@ export function SubscriptionProvider({children}) {
         setCoffee([]);
     }
     function addCoffee(name) {
+        if (boxQuantity >= 3) {
+            return;
+        }
         setCoffee(prevCoffees => {
             const existingCoffee = prevCoffees.find(coffee => coffee.name === name);
 

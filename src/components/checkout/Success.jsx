@@ -35,7 +35,7 @@ function Success() {
                 </CardHeader>
                 <CardBody>
                     <Stack maxWidth={"50%"} mx={"auto"} mb={10}>
-                        <Text className="font-oliveAntique text-center" fontSize={useBreakpointValue({base: "lg", md: "2xl"})}>Agradecemos pela compra!</Text>
+                        <Text className="font-headline text-center" fontSize={useBreakpointValue({base: "lg", md: "2xl"})}>Agradecemos pela compra!</Text>
                         <Lottie options={{animationData}} />
                     </Stack>
                 </CardBody>

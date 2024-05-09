@@ -10,7 +10,7 @@ const Footer = () => {
 
                 <Stack direction="column" spacing="1">
                     <Link href="/boutique">Coffee</Link>
-                    <Link href="/sobre-nos">About Us</Link>
+                    <Link href="/sobre">About Us</Link>
                     <Link href="https://maps.app.goo.gl/XVfFfdvZ1USq2XjZ7">Location</Link>
                     <Link href="/contacto">Contact Us</Link>
                 </Stack>

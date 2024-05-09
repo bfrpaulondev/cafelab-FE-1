@@ -11,7 +11,7 @@ import {
     Modal,
     ModalBody,
     ModalCloseButton,
-    ModalContent,
+    ModalContent, ModalFooter,
     ModalHeader,
     ModalOverlay,
     Stack,
@@ -59,11 +59,13 @@ const Subscricao = () => {
         <SidebarWithHeader>
             <Stack backgroundColor={"#81938c"} p={8}>
                 <Stack justify="flex-start" align="center" my={6} mx={4} spacing="24px">
-                    <Text className="font-oliveAntique" align="center" fontWeight="extrabold" fontSize={fontSize} letterSpacing="-0.08em" color="#000000">
+                    <Text className="cafelab" align="center" fontWeight="extrabold" fontSize={fontSize}  color="#000000">
                         SUBSCRIÇÃO CAFELAB
                     </Text>
                 </Stack>
 
+                {
+                    /*
                 <Stack alignItems={"center"} width={"100%"}>
                     <Card height="100%"
                           maxW='100%'
@@ -104,6 +106,8 @@ const Subscricao = () => {
                         </CardBody>
                     </Card>
                 </Stack>
+                */
+                }
                 <Stack direction={["column", 'row']} spacing="6" align="center" justify="space-between">
                     <Stack spacing={stackSpacing} alignItems={"center"} width={sectWidth}>
                         <Card height="100%"
@@ -113,7 +117,7 @@ const Subscricao = () => {
                                 <Box my={8}>
                                 </Box>
                                 <Stack justify="flex-start" align="center" fontSize={"3xl"} spacing="0px">
-                                    <Text className="font-oliveAntique" textAlign={"center"} fontWeight="extrabold" letterSpacing="-0.08em" color="#000000">
+                                    <Text className="font-headline" textAlign={"center"} fontWeight="extrabold" letterSpacing="-0.08em" color="#000000">
                                         Fé no Cafelab
                                     </Text>
                                 </Stack>
@@ -158,7 +162,7 @@ const Subscricao = () => {
                               backgroundColor={"#FFFFFF"}>
                             <CardHeader align={"center"}>
                                 <Stack justify="flex-start" align="center" fontSize={"3xl"} spacing="0px">
-                                    <Text className="font-oliveAntique" fontWeight="extrabold" letterSpacing="-0.08em" color="#000000">
+                                    <Text className="font-headline" fontWeight="extrabold" letterSpacing="-0.08em" color="#000000">
                                         Depois do Cafelab,
                                         <br/>eu me expresso
                                     </Text>
@@ -200,11 +204,15 @@ const Subscricao = () => {
                                         <ModalContent>
                                             <ModalHeader>Escolha seus cafés!</ModalHeader>
                                             <ModalCloseButton/>
-                                            <ModalBody>
+                                            <ModalBody  overflowY="auto">
                                                 <SubscriptionProvider>
                                                     <ProductsCarousel/>
                                                 </SubscriptionProvider>
+
                                             </ModalBody>
+                                            <ModalFooter>
+                                                <Button onClick={onClose}>Fechar</Button>
+                                            </ModalFooter>
                                         </ModalContent>
                                     </Modal>
                                 </Stack>

@@ -51,12 +51,12 @@ const Carousel = () => {
     }
 
     return (
-        <Stack alignItems={"center"}>
+        <Stack alignItems={"center"} >
             <Text>
                 Sua subscrição {boxQuantity}/3
             </Text>
             <Stack id="cafeCarousel" className="carousel slide">
-                <Box className="carousel-inner" px={padding}>
+                <Stack maxHeight={"100%"}  className="carousel-inner" px={padding}>
                     {products.map((product, index) => (
                         <ProductCarouselItem
                             {...product}
@@ -64,7 +64,7 @@ const Carousel = () => {
                             allProducts={products}
                         />
                     ))}
-                </Box>
+                </Stack>
                 <button className="carousel-control-prev" type="button" data-bs-target="#cafeCarousel" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Previous</span>

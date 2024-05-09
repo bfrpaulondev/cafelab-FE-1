@@ -9,7 +9,7 @@ import {
     Icon,
     IconButton,
     Image,
-    Link,
+    Link, Spacer,
     Text,
     useColorModeValue,
     useDisclosure, VStack
@@ -32,9 +32,7 @@ const LinkItems = [
     {name: 'Subscrição', route: '/subscricao', icon: FiPackage},
     {name: 'Boutique', route: '/boutique', icon: MdCoffee},
     {name: 'Agenda', route: '/agenda', icon: FiCalendar},
-    {name: 'Contactos', route: '/contactos', icon: FiMail},
-    {name: 'Sobre o cafelab', route: '/sobre', icon: FaA},
-    {name: 'Política de reembolso', route: '/reembolso', icon: FaA},
+    {name: 'Política de retorno', route: '/reembolso', icon: FaA},
 ];
 
 export default function SidebarWithHeader({children}) {
@@ -62,69 +60,70 @@ export default function SidebarWithHeader({children}) {
 
     );
 }
-
 const SidebarContent = ({onClose}) => {
     const navigate = useNavigate();
     const {customer, logOut} = useAuth();
     return (
         <>
-            <Flex h="20" flexDirection="column" alignItems="center" mx="8" mb={75} mt={10} justifyContent="space-between">
-                <CloseButton mb={4} onClick={onClose}/>
-                <Image
-                    borderRadius='full'
-                    boxSize='75px'
-                    src='assets/CafeLabLogo.png'
-                    alt='CAfeLab'
-                    onClick={() => navigate('/')}
-                />
-                <Text className={"cafelab"} mb={10} fontSize="3xl">
-                    CAFELAB
-                </Text>
-                {LinkItems.map((link) => (
-                    <NavItem key={link.name} route={link.route} icon={link.icon}>
-                        {link.name}
-                    </NavItem>
-                ))}
-                {customer ?
-                    <HStack
-                        onClick={() => navigate('/login')}>
-                        <Avatar
-                            size={'sm'}
-                            src={
-                                'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                            }
-                        />
-                        <VStack
-                            display={{base: 'none', md: 'flex'}}
-                            alignItems="flex-start"
-                            spacing="1px"
-                            ml="2">
-                        </VStack>
-                        <Box display={{base: 'none', md: 'flex'}}>
-                            <IconButton
-                                icon={<FaSignOutAlt/>}
-                                onClick={logOut} aria-label={"logout"}>
-                                Sign out
-                            </IconButton>
-                        </Box>
-                    </HStack>
-                    :
-                <Stack direction={"horizontal"} width={"100%"} alignSelf={"center"} >
-                    Login
-                    <IconButton
-                        size="lg"
-                        variant="ghost"
-                        aria-label="log in"
-                        icon={<FaSignInAlt/>}
-                        onClick={() => navigate('/login')}
+            <Flex h="100%" flexDirection="column" justifyContent="space-between">
+                <Flex direction="column" alignItems="center" mx="8">
+                    <CloseButton my={8} onClick={onClose}/>
+                    <Image
+                        maxHeight={"70px"}
+                        src='assets/logo.png'
+                        alt='Cafelab'
+                        onClick={() => navigate('/')}
                     />
-                </Stack>
-                }
+                    <Text className={"cafelab"} mb={10} mt={4} fontSize="3xl">
+                        CAFELAB
+                    </Text>
+                    {LinkItems.map((link) => (
+                        <NavItem key={link.name} route={link.route} icon={link.icon}>
+                            {link.name}
+                        </NavItem>
+                    ))}
+                </Flex>
+                <Flex direction="column" alignItems="center" mx="8">
+                    {customer ?
+                        <HStack
+                            onClick={() => navigate('/login')}>
+                            <Avatar
+                                size={'sm'}
+                                src={
+                                    'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                                }
+                            />
+                            <VStack
+                                display={{base: 'none', md: 'flex'}}
+                                alignItems="flex-start"
+                                spacing="1px"
+                                ml="2">
+                            </VStack>
+                            <Box display={{base: 'none', md: 'flex'}}>
+                                <IconButton
+                                    icon={<FaSignOutAlt/>}
+                                    onClick={logOut} aria-label={"logout"}>
+                                    Sign out
+                                </IconButton>
+                            </Box>
+                        </HStack>
+                        :
+                        <Stack direction={"horizontal"} width={"100%"} alignSelf={"center"} >
+                            Login
+                            <IconButton
+                                size="lg"
+                                variant="ghost"
+                                aria-label="log in"
+                                icon={<FaSignInAlt/>}
+                                onClick={() => navigate('/login')}
+                            />
+                        </Stack>
+                    }
+                </Flex>
             </Flex>
         </>
     );
 };
-
 const NavItem = ({icon, route, children, ...rest}) => {
     return (
         <Link href={route} style={{textDecoration: 'none'}} _focus={{boxShadow: 'none'}}>
@@ -179,7 +178,7 @@ const MobileNav = ({onOpen, ...rest}) => {
             />
             <AbsoluteCenter axis='horizontal'>
                 <Image
-                    boxSize='40px'
+                    height={"16"}
                     margin='auto'
                     src='assets/logo.png'
                     alt='CafeLab'

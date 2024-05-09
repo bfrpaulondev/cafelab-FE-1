@@ -23,14 +23,14 @@ const ProductCard = ({id, nome, descricao, origem, variedade, grao, preco, image
                     </Stack>
                     <Stack spacing={stackSpacing} width={sectWidth}>
                         <Stack justify="flex-end" maxWidth="100%" mt={4}>
-                            <Text className="font-oliveAntique text-center" fontSize={fontHl}>{nome}</Text>
-                            <Text className="font-oliveAntique text-center" fontSize={fontHl2}>Origem:{origem}</Text>
+                            <Text className="font-headline text-center" fontSize={fontHl}>{nome}</Text>
+                            <Text className="font-headline text-center" fontSize={fontHl2}>Origem:{origem}</Text>
                         </Stack>
                         <Stack justify="flex-end" maxWidth="100%" mt={5}>
-                            <Text className="font-oliveAntique text-left" fontSize={"xl"}>{descricao}</Text>
+                            <Text className="font-headline text-left" fontSize={"xl"}>{descricao}</Text>
                         </Stack>
                         <Stack justify="flex-end" maxWidth="100%">
-                            <Text className="font-oliveAntique text-left" fontSize={"xl"}>Variedade: {variedade}</Text>
+                            <Text className="font-headline text-left" fontSize={"xl"}>Variedade: {variedade}</Text>
                         </Stack>
 
                         <Stack p={8} align={'center'}>
