@@ -1,5 +1,4 @@
 import SidebarWithHeader from "../shared/SideBar.jsx";
-import ModalSubscricao from "./ModalSubscricao.jsx";
 import {Stack, Text, useBreakpointValue} from "@chakra-ui/react";
 import Carousel from "../products/ProductsCarousel.jsx";
 import {FaBoxOpen} from "react-icons/fa";
@@ -22,14 +21,10 @@ const FeNoCafeLab = () => {
                 <Text className="font-headline" fontWeight="extrabold" fontSize={fontSize2} letterSpacing="-0.08em" color="#000000">
 
                     <Stack direction={['row']} spacing="4" align="center" justify="space-between">
-                        <Text>0/3</Text> <FaBoxOpen /><FaBoxOpen /><FaBoxOpen />
+                        <Text>0/3</Text> <FaBoxOpen/><FaBoxOpen/><FaBoxOpen/>
                     </Stack>
                 </Text>
             </Stack>
-            <Carousel>
-            </Carousel>
-            <ModalQuiz>
-            </ModalQuiz>
         </SidebarWithHeader>
     );
 }

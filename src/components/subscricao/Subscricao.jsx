@@ -11,7 +11,8 @@ import {
     Modal,
     ModalBody,
     ModalCloseButton,
-    ModalContent, ModalFooter,
+    ModalContent,
+    ModalFooter,
     ModalHeader,
     ModalOverlay,
     Stack,
@@ -24,8 +25,7 @@ import {useShoppingCart} from "../context/ShoppingCartContext.jsx";
 import {useNavigate} from "react-router-dom";
 import ProductsCarousel from "../products/ProductsCarousel.jsx";
 import React from "react";
-import {SubscriptionProvider} from "../context/SubscriptionContext.jsx";
-import ModalKit from "./ModalKit.jsx";
+import {SubscriptionProvider, useSubscription} from "../context/SubscriptionContext.jsx";
 import ModalQuiz from "./ModalQuiz.jsx";
 
 const Subscricao = () => {
@@ -39,27 +39,18 @@ const Subscricao = () => {
     const navigate = useNavigate();
 
     const {isOpen, onOpen, onClose} = useDisclosure()
+    const {createFeNoCafelab} = useSubscription()
 
-    const {addSubscription, emptyCart} = useShoppingCart();
-    const subscricao = {
-        id: 999,
-        nome: "Fé no Cafelab",
-        preco: 19.99,
-        imagem: "assets/bundle.png",
-        descricao: "3 embalagens de 200g em grãos ou moídas de acordo com a sua indicação de consumo."
-    };
-
-    function feNoCafelab() {
-        emptyCart(true);
-        addSubscription(subscricao);
+    function feNoCafelab(variante) {
+        createFeNoCafelab(variante);
         navigate('/subscricao/checkout');
     }
 
     return (
         <SidebarWithHeader>
-            <Stack backgroundColor={"#81938c"} p={8}>
+            <Stack backgroundColor={"whiteAlpha.50"}>
                 <Stack justify="flex-start" align="center" my={6} mx={4} spacing="24px">
-                    <Text className="cafelab" align="center" fontWeight="extrabold" fontSize={fontSize}  color="#000000">
+                    <Text className="cafelab" align="center" fontSize={fontSize} color="#000000">
                         SUBSCRIÇÃO CAFELAB
                     </Text>
                 </Stack>
@@ -109,16 +100,17 @@ const Subscricao = () => {
                 */
                 }
                 <Stack direction={["column", 'row']} spacing="6" align="center" justify="space-between">
-                    <Stack spacing={stackSpacing} alignItems={"center"} width={sectWidth}>
+                    <Stack spacing={stackSpacing} alignItems={"center"} width={sectWidth} mb={8}>
                         <Card height="100%"
                               maxW='2xl'
-                              backgroundColor={"#FFFFFF"}>
+                              bgColor={"whiteAlpha.50"} variant='outline' border={"1px"}
+                              mx={4}>
                             <CardHeader align={"center"}>
                                 <Box my={8}>
                                 </Box>
                                 <Stack justify="flex-start" align="center" fontSize={"3xl"} spacing="0px">
-                                    <Text className="font-headline" textAlign={"center"} fontWeight="extrabold" letterSpacing="-0.08em" color="#000000">
-                                        Fé no Cafelab
+                                    <Text className="font-headline" textAlign={"center"} >
+                                        FÉ NO CAFELAB
                                     </Text>
                                 </Stack>
                             </CardHeader>
@@ -135,36 +127,40 @@ const Subscricao = () => {
 
                                 </Text>
                                 <Text align="center" fontSize={"xs"} mt={6}>
-                                    3 embalagens de 200g em grãos ou moídas<br/> de acordo com a sua indicação de consumo.
+                                    3 embalagens de 175g em grãos ou moídas<br/> de acordo com a sua indicação de consumo.
 
                                 </Text>
                             </CardBody>
-                            <Image
-                                objectFit='cover'
-                                src='assets/bundle.png'
-                                alt='Chakra UI'
-                                m={6}
-                            />
 
+                            <Image
+                                alignSelf="center"
+                                objectFit='cover'
+                                src='assets/subscricao_meexpresso.jpg'
+                                alt='Depois do cafelab eu me expresso'
+                                m={6}
+                                boxSize={"80%"}
+                                borderRadius='lg'
+                            />
                             <CardFooter alignSelf="center">
                                 <Flex justifyContent="center" alignItems="center">
-                                    <Button leftIcon={<FaHandshake/>} onClick={() => feNoCafelab()} size='lg' height='48px' width='200px' border='2px'
+                                    <Button leftIcon={<FaHandshake/>} onClick={() => feNoCafelab("graos")} size='lg' height='48px' width='200px' border='2px'
                                             variant='outline' colorScheme='#FEEBC8'>
                                         Confio
                                     </Button>
                                 </Flex>
                             </CardFooter>
                         </Card>
-                    </Stack>
-                    <Stack width={sectWidth} alignItems={"center"}>
+                    </Stack >
+                    <Stack width={sectWidth} alignItems={"center"}  mb={8}>
                         <Card height="100%"
                               maxW='2xl'
-                              backgroundColor={"#FFFFFF"}>
+                              bgColor={"whiteAlpha.50"} variant='outline' border={"1px"}
+                        mx={4}>
                             <CardHeader align={"center"}>
                                 <Stack justify="flex-start" align="center" fontSize={"3xl"} spacing="0px">
-                                    <Text className="font-headline" fontWeight="extrabold" letterSpacing="-0.08em" color="#000000">
-                                        Depois do Cafelab,
-                                        <br/>eu me expresso
+                                    <Text className="font-headline">
+                                        DEPOIS DO CAFELAB,
+                                        <br/>EU ME EXPRESSO
                                     </Text>
                                 </Stack>
                             </CardHeader>
@@ -182,14 +178,12 @@ const Subscricao = () => {
                                     3 embalagens de 200g em grãos ou moídas<br/> de acordo com a sua indicação de consumo.
                                 </Text>
                             </CardBody>
+
                             <Image
-                                alignSelf="center"
                                 objectFit='cover'
-                                src='assets/bundle.png'
-                                alt='Chakra UI'
+                                src='assets/subscricao_fenocafe.jpg'
+                                alt='Fé no cafelab'
                                 m={6}
-                                boxSize={"80%"}
-                                borderRadius='lg'
                             />
 
                             <CardFooter alignSelf="center">
@@ -204,7 +198,7 @@ const Subscricao = () => {
                                         <ModalContent>
                                             <ModalHeader>Escolha seus cafés!</ModalHeader>
                                             <ModalCloseButton/>
-                                            <ModalBody  overflowY="auto">
+                                            <ModalBody overflowY="auto">
                                                 <SubscriptionProvider>
                                                     <ProductsCarousel/>
                                                 </SubscriptionProvider>
@@ -219,10 +213,8 @@ const Subscricao = () => {
                             </CardFooter>
                         </Card>
                     </Stack>
-
                 </Stack>
                 <ModalQuiz/>
-
             </Stack>
         </SidebarWithHeader>
     );

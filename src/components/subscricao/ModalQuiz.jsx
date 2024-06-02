@@ -11,6 +11,7 @@ import {
     ModalOverlay,
     Stack,
     UnorderedList,
+    useBreakpointValue,
     useDisclosure
 } from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
@@ -23,6 +24,8 @@ function ModalQuiz() {
     const {isOpen, onOpen, onClose} = useDisclosure();
 
     const navigate = useNavigate();
+
+    const modalSize = useBreakpointValue({base: "full", md: "90vw"});
 
     useEffect(() => {
         onOpen();
@@ -59,39 +62,40 @@ function ModalQuiz() {
 
 
     return (
-        <Modal isCentered closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+        <Modal isCentered closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size={"2xl"}>
             <ModalOverlay
                 bg='blackAlpha.300'
-                backdropFilter='blur(10px) hue-rotate(90deg)'
+                backdropFilter='blur(10px)'
             />
 
-            { firstSlide ? (
-            <ModalContent>
-                <ModalHeader>
-                    <Box as='span'>Novo por aqui?</Box>
-                </ModalHeader>
-                <ModalBody>
-                    <Stack ><Box as='span'>
-                        Para te ajudar temos um quiz para descobrir o melhor café para você! O que acha?
-                    </Box>
-                    </Stack>
-                </ModalBody>
-                <ModalFooter>
-                    <Button  mr={3} onClick={onClose}>
-                        Agora não...
-                    </Button>
-                    <Button colorScheme='blue' onClick={() => setFirstSlide(false)}>
-                        Vamos lá!
-                    </Button>
-                </ModalFooter>
-            </ModalContent>
+            {firstSlide ? (
+                <ModalContent>
+                    <ModalHeader>
+                        <Box as='span'>Novo por aqui?</Box>
+                    </ModalHeader>
+                    <ModalBody>
+                        <Stack>
+                            <Box as='span'>
+                            Para te ajudar temos um quiz para descobrir o melhor café para você! O que acha?
+                        </Box>
+                        </Stack>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button mr={3} onClick={onClose}>
+                            Agora não...
+                        </Button>
+                        <Button colorScheme='blue' onClick={() => setFirstSlide(false)}>
+                            Vamos lá!
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
             ) : !showResult ? (
                 <ModalContent>
                     <ModalHeader>
                         <Box as='span' className="active-question-no">{addLeadingZero(activeQuestion + 1)}</Box>
                         <Box as='span' className="total-question">/{addLeadingZero(questions.length)}</Box>
                     </ModalHeader>
-                    <ModalBody>
+                    <ModalBody alignSelf={"center"}>
                         <Stack className="quiz-container">
                             <Heading as='h2' size='3xl'>{question}</Heading>
                             <UnorderedList>
@@ -125,7 +129,7 @@ function ModalQuiz() {
                         />
                     </ModalBody>
                     <ModalFooter>
-                        <Button  mr={3} onClick={onClose}>
+                        <Button mr={3} onClick={onClose}>
                             Prefiro escolher...
                         </Button>
                         <Button colorScheme='blue' onClick={() => navigate('/subscricao/fenocafelab')}>

@@ -1,4 +1,5 @@
 import {Card, CardBody, Image, SimpleGrid, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
+import ProductCard from "./ProductCard.jsx";
 
 const OurPicks = () => {
     const stackSpacing = useBreakpointValue({base: "20px", md: "40px"});
@@ -7,6 +8,9 @@ const OurPicks = () => {
             <Text className="font-headline text-center" fontSize={stackSpacing}>Nossos favoritos</Text>
             /* TODO: fix image borders to fit in the card */
             <SimpleGrid spacing={4} mb={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
+                <ProductCard>
+
+                </ProductCard>
                 <Card
                     backgroundColor={"#FFFFFF"}>
                     <Image

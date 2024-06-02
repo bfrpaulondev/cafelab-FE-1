@@ -1,12 +1,15 @@
 import SidebarWithHeader from "../shared/SideBar.jsx";
-import {Spinner, Stack, Text, Wrap, WrapItem} from "@chakra-ui/react";
+import {Spinner, Stack, Text, useBreakpointValue, Wrap, WrapItem} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import CardWithImage from "./EventCard.jsx";
 import {getNextEvents, getPastEvents} from '../../services/eventService.js';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import PastEventCard from "./PastEventCard.jsx";
 
 const Agenda = () => {
+
+    const fontSize = useBreakpointValue({base: "5xl", md: "62px"});
 
     const [events, setEvents] = useState([]);
     const [pastEvents, setPastEvents] = useState([]);
@@ -90,13 +93,14 @@ const Agenda = () => {
             </SidebarWithHeader>
         )
     }
-
+    console.log(pastEvents)
     return (
         <SidebarWithHeader>
-            <Stack backgroundColor={"#556560"}>
-                <Stack className={"agenda-header"} mt={6} my={4}>
-                    <Text className={"cafelab"} align={"center"} fontSize="5xl">
-                        Próximos eventos</Text>
+            <Stack backgroundColor={"whiteAlpha.50"}>
+                <Stack justify="flex-start" align="center" my={6} mx={4} spacing="24px">
+                    <Text className="cafelab" align="center" fontSize={fontSize}  color="#000000">
+                        PRÓXIMOS EVENTOS
+                    </Text>
                 </Stack>
                 <Stack alignSelf={"center"} w={"90vw"}>
                     <Wrap justify={"center"}>
@@ -109,14 +113,16 @@ const Agenda = () => {
                             </WrapItem>
                         ))}
                     </Wrap>
-                    <Stack className={"agenda-header"} mt={6} my={4}>
-                        <Text className={"cafelab"} align={"center"} fontSize="5xl">
-                            Eventos passados</Text>
+                    <Stack justify="flex-start" align="center" my={6} mx={4} spacing="24px">
+                        <Text className="cafelab" align="center" fontSize={fontSize}  color="#000000">
+                            EVENTOS PASSADOS
+                        </Text>
                     </Stack>
                     <Carousel responsive={responsive}>
+
                         {pastEvents.map((event, index) => (
-                            <Stack key={index}>
-                                <CardWithImage
+                            <Stack key={index} >
+                                <PastEventCard
                                     {...event}
                                     imageNumber={index}
                                     events={events}

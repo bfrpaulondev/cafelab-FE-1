@@ -70,10 +70,18 @@ const Home = () => {
                               color="#000000">
                             VISITE NOSSO ESPAÇO
                         </Text>
-                        <Stack className={"mainPanels"} mx={4} align="center" backgroundSize={"cover"}
-                               backgroundColor="cornsilk" backgroundImage="url('assets/esplanada.jpg')">
+                        <Stack className={"mainPanels"} mx={4} align="center" backgroundSize={"cover"}  bgPosition={"75% 25%"}
+                               backgroundColor="cornsilk" backgroundImage="url('assets/IMG_8054.JPG')">
                             <Stack justify="flex-start" height={"600px"} w={"100%"} mt={4} mb={10}>
                                 <Flex direction="column" justify="space-between" align="center" width={"100%"} height="100%">
+                                    <Button leftIcon={<FaMapMarkerAlt/>} onClick={() => window.open("https://maps.app.goo.gl/XVfFfdvZ1USq2XjZ7", "_blank")}
+                                            size='lg' height='48px' width='200px' border='2px'
+                                            variant={"solid"} backgroundColor={"blackAlpha.800"} color={"antiquewhite"}>
+                                        ABRA NO MAPS
+                                    </Button>
+
+                                    <Stack justify="center" align="center" spacing={stackSpacing} my={4} width="60%" height="50%">
+                                    </Stack>
                                     <Stack justify="center" align="center" width={"80%"} spacing={stackSpacing}>
                                         <Box mx={4} backgroundColor="rgba(0, 0, 0,0.7)" width={"100%"} align="center" padding={boxPadding}>
                                             <Text className={"cafelab"} lineHeight="1.48" fontWeight="regular" fontSize={fontHl2} letterSpacing="-0.02em"
@@ -92,14 +100,6 @@ const Home = () => {
                                             </Box>
                                         </Stack>
                                     </Stack>
-                                    <Stack justify="center" align="center" spacing={stackSpacing} my={4} width="60%" height="50%">
-
-                                    </Stack>
-                                    <Button leftIcon={<FaMapMarkerAlt/>} onClick={() => window.open("https://maps.app.goo.gl/XVfFfdvZ1USq2XjZ7", "_blank")}
-                                            size='lg' height='48px' width='200px' border='2px'
-                                            variant={"solid"} backgroundColor={"blackAlpha.800"} color={"antiquewhite"}>
-                                        ABRA NO MAPS
-                                    </Button>
                                 </Flex>
                             </Stack>
                         </Stack>
@@ -107,7 +107,7 @@ const Home = () => {
 
                     <Stack justify="center" align="center" width={sectWidth}>
                         <Stack className={"mainPanels main-panel"} p={4} backgroundSize={"cover"} height={"800px"}
-                               backgroundColor="cornsilk" backgroundImage="url('assets/menu_primavera.jpg')" spacing={stackSpacing}>
+                               backgroundColor="cornsilk" backgroundImage="url('assets/menu.jpg')" spacing={stackSpacing}>
                             <div className="sticker p-3">
                                 NOVO!
                             </div>

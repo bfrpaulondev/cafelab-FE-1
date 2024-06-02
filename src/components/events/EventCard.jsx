@@ -54,7 +54,7 @@ export default function CardWithImage({id, date, name, description, local, image
                 <Stack direction={'row'} justify={'center'} spacing={6} p={4}>
                     <Stack>
                         <Button
-                            bg={'red.400'}
+                            bg={'facebook.600'}
                             color={'white'}
                             rounded={'lg'}
                             _hover={{

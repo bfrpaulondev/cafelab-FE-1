@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react"
-import {Box, Spinner, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
+import {Button, Select, Spinner, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
 import ProductCarouselItem from "./ProductCarouselItem.jsx";
 import {getProductsBySection} from "../../services/productsService.jsx";
 import {useSubscription} from "../context/SubscriptionContext.jsx";
+import {FaHandshake} from "react-icons/fa";
 
 const Carousel = () => {
 
@@ -51,12 +52,27 @@ const Carousel = () => {
     }
 
     return (
-        <Stack alignItems={"center"} >
-            <Text>
-                Sua subscrição {boxQuantity}/3
-            </Text>
-            <Stack id="cafeCarousel" className="carousel slide">
-                <Stack maxHeight={"100%"}  className="carousel-inner" px={padding}>
+        <Stack alignItems={"center"}>
+            <Stack my={4}>
+                <Select placeholder='Como quer seu café?'>
+                    <option value='beans'>Grãos</option>
+                    <option value='expresso'>Moído para expresso</option>
+                    <option value='frenchpress'>Moído para prensa francesa/ italiana</option>
+                </Select>
+            </Stack>
+            <Stack direction={"row"} my={4}>
+                <Text className={"cafelab"} fontWeight={"bold"} fontSize={"xl"}>
+                    SUA SUBSCRIÇÃO: {boxQuantity}/3
+                </Text>
+                { boxQuantity === 3 ? (
+                    <Button leftIcon={<FaHandshake/>} size='sm' border='2px'
+                            variant='outline' colorScheme='#FEEBC8'>
+                        Pronto
+                    </Button>
+                ) : ""}
+            </Stack>
+            <Stack id="cafeCarousel" className="carousel " data-ride="carousel">
+                <Stack maxHeight={"100%"} className="carousel-inner" px={padding}>
                     {products.map((product, index) => (
                         <ProductCarouselItem
                             {...product}

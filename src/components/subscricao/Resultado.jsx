@@ -1,4 +1,4 @@
-import {Card, CardBody, Heading, Image, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
+import {Card, CardBody, Image, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
 
 const Resultado = ({exp, sabor, uso}) => {
 
@@ -19,18 +19,32 @@ const Resultado = ({exp, sabor, uso}) => {
 
                 <Stack>
                     <CardBody>
-                        <Text size='md'>{exp}</Text>
-                        <Text size='md'>{sabor}</Text>
-                        <Text size='md'>{uso}</Text>
-
-
-                        { (sabor == 0 && uso in [0, 1]) ? (
-                            <Text py='2'>Recomendamos grãos arábica por serem mais suaves e menos amargos. Além de serem adequados a prensa francesa e cafeteira
-                            italiana.</Text>
-                        ) : (sabor == 0 && uso == 3) ? (
-                            <Text py='2'>Recomendamos grãos arábica por serem mais suaves e menos amargos. .</Text>
-                            ) : (<Text py='2'>Recomendamos grãos arábica por serem mais suaves e menos amargos. Além de serem adequados a prensa francesa e cafeteira
-                            italiana.</Text>)
+                        {((exp in [0, 1] && sabor === 0 && uso in [0, 1]) || (sabor === 0 && uso === 2)) ? (
+                            <Text py='2'>Para você, nosso cliente explorador do mundo das especialidades, o convidamos a experimentar nossos cafés aromatizados
+                                que proporcionarão uma experiência sensorial e apresentar novas possibilidades e aromas no seu dia-a-dia.
+                                Destaque especial para o nosso blend exclusivo, Lab 01. Prepare-se para uma experiência intensa e profundamente aromática que
+                                certamente irá surpreendê-lo.
+                                Este café foi meticulosamente elaborado para despertar sua curiosidade e satisfazer seu paladar mais exigente.
+                            </Text>
+                        ) : ((sabor === 1 && uso in [0, 1]) || (sabor === 1 && uso === 2)) ? (
+                            <Text py='2'>Para você, nosso cliente explorador do mundo das especialidades, o convidamos a experimentar nossos cafés mais
+                                encorpados, adequados especialmente ao seu método de preparo,
+                                que permitirá extrair o máximo de sabor dos nossos grãos.
+                                Indicamos também saborear o nosso especial blend, Lab 01 que resulta em uma experiência aromática e intensa. Com certeza te
+                                surpreenderá.
+                            </Text>
+                        ) : ((sabor === 2 && uso in [0, 1]) || (sabor === 2 && uso === 2)) ? (
+                            <Text py='2'>Para você, nosso cliente explorador do mundo das especialidades, o convidamos a experimentar nossos cafés que de acordo
+                                com seu método de preparo, permitem extrair o máximo de aroma e a acidez, possibilitando apreciar as notas complexas de nossos
+                                grãos.
+                                Indicamos também saborear o nosso especial blend, Lab 01 que resulta em uma experiência aromática e intensa. Com certeza te
+                                surpreenderá.
+                            </Text>
+                        ) : (
+                            <Text py='2'>Para você, nosso cliente aficionado pela arte do café, o convidamos a experimentar uma variedade incomparável de grãos,
+                                de origens diversas como África e América. Indicamos também saborear o nosso especial blend, Lab 01 que resulta em uma
+                                experiência aromática e intensa. Com certeza te surpreenderá.
+                            </Text>)
                         }
                     </CardBody>
                 </Stack>

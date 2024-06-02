@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import SidebarWithHeader from "../shared/SideBar.jsx";
 import OurPicks from "./OurPicks.jsx";
-import {Button, Spinner, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
+import {Button, Image, Spinner, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
 import ProductList from "./ProductList.jsx";
 import {getProductsBySection, Sections} from "../../services/productsService.jsx";
 import {FiPackage, FiShoppingBag} from "react-icons/fi";
@@ -32,40 +32,46 @@ export default function Boutique() {
 
     return (
         <SidebarWithHeader>
-            <Stack className={"main-panel"} height={"300px"} paddingTop={spacingTitle} maxWidth="100%"
-                   backgroundImage="url('assets/capa_bnw.jpeg')"
-                   backgroundSize="cover"
-                   backgroundPosition="center"
-                   >
 
-                <Stack align={"center"} maxWidth="100%" mb={10} ml={useBreakpointValue({md: 20})}>
-                    <Stack alignSelf="stretch" direction={['column', 'row']}  justify="center" align="center" spacing="12px" >
-                        <Text className="font-headline" align="center" fontWeight="extrabold"
-                              fontSize={fontTitleSize} letterSpacing="-0.08em"
-                              style={{ WebkitTextStroke: "3px white" }}
-                              color="#000000">
-                            CAFELAB BOUTIQUE
-                        </Text>
-                    </Stack>
-                </Stack>
+            <Stack justify="flex-start" align="center" my={6} mx={4} spacing="24px">
+                <Text className="cafelab" align="center" fontSize={fontSize}  color="#000000">
+                    BOUTIQUE CAFELAB
+                </Text>
+                <Text maxW={"800px"} fontFamily="Roboto" fontWeight="regular" fontSize={fontHeadlineSize} letterSpacing="tighter" color="black"
+                      textAlign="center" mx={4}>
+                    Além dos cafés especiais e acessórios, trazemos agora uma coleção exclusiva de Ecobags, Aventais, Chávenas e muito mais!
+                </Text>
             </Stack>
-            <Stack backgroundColor={"#81938c"}>
+
+            <Stack className={"main-panel"} Width="100wv"
+                   >
+                <Image
+                    alignSelf="center"
+                    src='assets/capa_boutique.jpeg'
+                    alt='Chakra UI'
+                />
+                {/*<Stack align={"center"} maxWidth="100%" mb={10} ml={useBreakpointValue({md: 20})}>*/}
+                {/*    <Stack alignSelf="stretch" direction={['column', 'row']}  justify="center" align="center" spacing="12px" >*/}
+                {/*        <Text className="font-headline" align="center" fontWeight="extrabold"*/}
+                {/*              fontSize={fontTitleSize} letterSpacing="-0.08em"*/}
+                {/*              style={{ WebkitTextStroke: "3px white" }}*/}
+                {/*              color="#000000">*/}
+                {/*            CAFELAB BOUTIQUE*/}
+                {/*        </Text>*/}
+                {/*    </Stack>*/}
+                {/*</Stack>*/}
+            </Stack>
+            <Stack backgroundColor={"whiteAlpha.50"}>
                 <Stack justify="flex-start" align="center" my={6} mx={4} spacing="24px">
 
-                    <Text maxW={"800px"} fontFamily="Roboto" fontWeight="regular" fontSize={fontHeadlineSize} letterSpacing="tighter" color="black"
-                          textAlign="center" mx={4}>
-                        CAFELAB BOUTIQUE!<br/>
-                        Além dos cafés especiais e acessórios, trazemos agora uma coleção exclusiva de Ecobags, Aventais, Chávenas e muito mais!
-                        Tudo pensado e produzido com o nosso compromisso ecológico e visando fortalecer ainda mais a nossa comunidade.
-                    </Text>
                     <Stack direction={'row'}>
-                        <Button variant={"outline"} onClick={(event) => {
+                        <Button variant={"solid"} backgroundColor={"blackAlpha.800"} color={"antiquewhite"} onClick={(event) => {
                             setSection(prevSection => prevSection === Sections.CAFE ? null : Sections.CAFE);
                             event.currentTarget.blur();
                         }}>
                             Café
                         </Button>
-                        <Button variant={"outline"} onClick={(event) => {
+                        <Button variant={"solid"} backgroundColor={"blackAlpha.800"} color={"antiquewhite"} onClick={(event) => {
                             setSection(prevSection => prevSection === Sections.BOUTIQUE ? null : Sections.BOUTIQUE);
                             event.currentTarget.blur();
                         }}>
@@ -81,7 +87,7 @@ export default function Boutique() {
                 )}
 
                 <Stack align={"center"} mx={10} p={10}>
-                    <OurPicks/>
+                    <OurPicks />
                 </Stack>
             </Stack>
         </SidebarWithHeader>

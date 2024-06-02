@@ -22,10 +22,10 @@ const ProductList = ({ products }) => {
                     const quantityInCart = getItemQuantity(product.id);
                         return (
                             <WrapItem>
-                                <Card width='sm' bgColor={"AppWorkspace"}>
+                                <Card width='sm' bgColor={"whiteAlpha.50"} variant='outline' border={"1px"}>
                                     <CardBody>
                                         <Stack mt='6' spacing='8'>
-                                            <Text className="font-headline text-center" fontSize={fontHl3}>{product.nome}</Text>
+                                            <Text className="cafelab text-center" fontWeight={"bold"} fontSize={fontHl3}>{product.nome.toUpperCase()}</Text>
                                             <Box
                                                 align='center'
                                             >
@@ -41,12 +41,11 @@ const ProductList = ({ products }) => {
                                             <Text maxHeight={"100px"} overflow="hidden" textOverflow="ellipsis">
                                                 {product.descricao}
                                             </Text>
-                                            <Text color='blue.600' fontSize='2xl' alignSelf={"right"}>
+                                            <Text color='black' fontSize='2xl' alignSelf={"right"}>
                                                 {formatCurrency(product.preco)}
                                             </Text>
                                         </Stack>
                                     </CardBody>
-                                    <Divider/>
                                     <CardFooter>
                                         <ButtonGroup spacing='2'>
                                             {
@@ -59,12 +58,12 @@ const ProductList = ({ products }) => {
                                                         <Button variant='ghost' onClick={() => increaseCartQuantity(product.id)}>+</Button>
                                                     </>
                                                 ) : (
-                                                    <Button variant='outline' colorScheme='blue' leftIcon={<MdAddShoppingCart/>} onClick={() => increaseCartQuantity(product.id)}>
+                                                    <Button variant={"solid"} backgroundColor={"blackAlpha.800"} color={"antiquewhite"} leftIcon={<MdAddShoppingCart/>} onClick={() => increaseCartQuantity(product.id)}>
                                                         Add to cart
                                                     </Button>
                                                 )
                                             }
-                                            <Button ml={2} variant='solid' colorScheme='blue'>
+                                            <Button ml={2} variant={"solid"} backgroundColor={"blackAlpha.800"} color={"antiquewhite"} >
                                                 Buy now
                                             </Button>
                                         </ButtonGroup>
