@@ -25,6 +25,7 @@ import {ChakraProvider} from "@chakra-ui/react";
 import AuthProvider from "./components/context/AuthContext.jsx";
 import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
 import Orders from "./components/orders/MyOrders.jsx";
+import {SubscriptionProvider} from "./components/context/SubscriptionContext.jsx";
 
 
 const {ToastContainer} = createStandaloneToast();
@@ -113,7 +114,7 @@ const router = createBrowserRouter([
     {
         path: "/orders",
         element: (
-            <ProtectedRoute><Orders /></ProtectedRoute>
+            <ProtectedRoute><Orders/></ProtectedRoute>
         )
     },
 ])
@@ -125,11 +126,13 @@ function App() {
                 <BrowserRouter>
                     <AuthProvider>
                         <ShoppingCartProvider>
-                            <Routes>
-                                {router.routes.map((route, index) => (
-                                    <Route key={index} path={route.path} element={route.element}/>
-                                ))}
-                            </Routes>
+                            <SubscriptionProvider>
+                                <Routes>
+                                    {router.routes.map((route, index) => (
+                                        <Route key={index} path={route.path} element={route.element}/>
+                                    ))}
+                                </Routes>
+                            </SubscriptionProvider>
                         </ShoppingCartProvider>
                     </AuthProvider>
                     <ToastContainer/>

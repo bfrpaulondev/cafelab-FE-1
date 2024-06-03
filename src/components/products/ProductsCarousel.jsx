@@ -3,7 +3,7 @@ import {Button, Select, Spinner, Stack, Text, useBreakpointValue} from "@chakra-
 import ProductCarouselItem from "./ProductCarouselItem.jsx";
 import {getProductsBySection} from "../../services/productsService.jsx";
 import {useSubscription} from "../context/SubscriptionContext.jsx";
-import {FaHandshake} from "react-icons/fa";
+import {FaCheck} from "react-icons/fa";
 
 const Carousel = () => {
 
@@ -64,11 +64,13 @@ const Carousel = () => {
                 <Text className={"cafelab"} fontWeight={"bold"} fontSize={"xl"}>
                     SUA SUBSCRIÇÃO: {boxQuantity}/3
                 </Text>
-                { boxQuantity === 3 ? (
-                    <Button leftIcon={<FaHandshake/>} size='sm' border='2px'
-                            variant='outline' colorScheme='#FEEBC8'>
-                        Pronto
-                    </Button>
+                {boxQuantity === 3 ? (
+                    <Stack px={4}>
+                        <Button leftIcon={<FaCheck/>} size='sm' border='2px'
+                                variant='outline' colorScheme='#FEEBC8'>
+                            Pronto
+                        </Button>
+                    </Stack>
                 ) : ""}
             </Stack>
             <Stack id="cafeCarousel" className="carousel " data-ride="carousel">
