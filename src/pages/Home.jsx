@@ -5,6 +5,7 @@ import { Box, HStack, VStack, useMediaQuery } from "@chakra-ui/react";
 import VisitOurSpace from "../components/VisitOurSpace/VisitOurSpace";
 import SpringMenuBanner from "../components/SpringMenuBanner/SpringMenuBanner";
 import HomeEventsSection from "../components/HomeEventsSection/HomeEventsSection";
+import Popup from "../components/Popup/Popup";
 export default function Home() {
   const [mobile] = useMediaQuery("(max-width: 992px)");
 
@@ -20,6 +21,7 @@ export default function Home() {
       }}
     >
       <Header />
+      <Popup/>
       <HomeHeroSection />
       {mobile ? (
         <VStack>
