@@ -1,0 +1,15 @@
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+}
+
+.swiper-pagination-bullet-active {
+  background: gray;
+}

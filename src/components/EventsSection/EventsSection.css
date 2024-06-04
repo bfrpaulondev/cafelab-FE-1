@@ -1,0 +1,37 @@
+.event-card {
+    /* Adicionando sombras para criar sensação de profundidade */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.5s, box-shadow 0.5s; /* Adicionando transição suave */
+  
+    /* Definindo uma escala menor para os cards */
+    transform: scale(0.95);
+  }
+  
+  .event-card:hover {
+    /* Aumentando o tamanho do card ao passar o mouse */
+    transform: scale(1);
+  
+    /* Ajustando a sombra para um efeito mais pronunciado ao passar o mouse */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+  }
+  
+  /* Estilo para o container dos cartões */
+.event-card-container {
+  perspective: 1000px; /* Adiciona perspectiva para o efeito 3D */
+  transition: transform 0.3s;
+}
+
+.event-card-container:hover {
+  transform: rotateY(10deg); /* Gira o container levemente para a direita no hover */
+}
+
+/* Estilo para os cartões */
+.event-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Adiciona sombra para profundidade */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-card-container:hover .event-card {
+  transform: translateY(-10px); /* Move o card para cima no hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2); /* Aumenta a sombra no hover */
+}
