@@ -1,49 +1,44 @@
-import SupabaseClientUtil from "../components/utilities/SupabaseClientUtil.jsx";
-import {getProductsById} from "./productsService.jsx";
+import axios from 'axios';
 
-const supabase = SupabaseClientUtil.supabaseClient
+const API_URL = 'https://coffelab-api.onrender.com/orders';
 
-export const getOrders = async () => {
 
-    console.log("Fetching orders...")
-    // Todo: implement put cache on orders table
-    const {data} = await supabase
-        .from('order')
-        .select();
-
-    return data;
-}
-
-export const addOrder = async (order) => {
-    console.log("Adding order...")
-    const {data} = await supabase
-        .from("order")
-        .insert({
-            user: order.user, // This will be converted to JSON
-            products: order.items, // This will be converted to JSON
-            total: order.total,
-            payment_status: order.paymentStatus
-        })
-    return data;
-}
-
-export const getRegularOrdersWithProducts = async (customer) => {
-    console.log(customer)
-    const {data} = await supabase
-        .from('order')
-        .select()
-        .filter('products', 'neq', null);
-    const orders = data
-    const ordersWithProductDetails = await Promise.all(orders.map(async order => {
-        if (!Array.isArray(order.products) || order.products.length <= 0) {
-            return null;
+const OrderService = {
+    createOrder: async (data) => {
+        try {
+            const response = await axios.post(API_URL, data);
+            return response.data;
+        } catch (error) {
+            console.error('Error while making POST request:', error);
+            throw error;
         }
-        const products = await Promise.all(order.products.map(async product => {
-            const productDetails = await getProductsById(product.id);
-            return {...productDetails[0], quantity: product.quantity};
-        }));
-        return {...order, products};
-    }));
-
-    return ordersWithProductDetails.filter(order => order !== null);
+    },
+    updateOrder: async ( data) => {
+        try {
+            const response = await axios.put(API_URL, data);
+            return response.data;
+        } catch (error) {
+            console.error('Error while making PUT request:', error);
+            throw error;
+        }
+    },
+    getAll: async () => {
+        try {
+            const response = await axios.get(`${API_URL}/all`);
+            return response.data;
+        } catch (error) {
+            console.error('Error while making GET request:', error);
+            throw error;
+        }
+    },
+    deleteOrder: async (id) => {
+        try {
+            const response = await axios.delete(`${API_URL}/${id}`);
+            return response.data;
+        } catch (error) {
+            console.error('Error while making DELETE request:', error);
+            throw error;
+        }
+    },
 }
+export default OrderService
