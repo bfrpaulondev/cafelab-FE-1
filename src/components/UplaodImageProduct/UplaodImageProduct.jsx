@@ -32,7 +32,7 @@ const ImageUploadProduct = ({ setImage, initialImage }) => {
   const uploadProps = useMemo(
     () => ({
       name: "file",
-      action: "https://coffelab-api.onrender.com/upload",
+      action: "https://cafelab-service-new.onrender.com/upload",
       headers: {
         authorization: "authorization-text",
       },

@@ -69,7 +69,7 @@ const NewsletterTable: React.FC = () => {
     // Função para buscar dados da API
     const fetchEmails = async () => {
       try {
-        const response = await axios.get('https://coffelab-api.onrender.com/newsletter/all');
+        const response = await axios.get('https://cafelab-service-new.onrender.com/newsletter/all');
         setEmails(response.data.data); // Acessar a propriedade 'data' da resposta
       } catch (err) {
         setError('Erro ao carregar emails. Tente novamente mais tarde.');

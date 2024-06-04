@@ -44,7 +44,7 @@ const App = () => {
 
   /* const fetchAdminData = async () => {
     try {
-      const response = await fetch("https://coffelab-api.onrender.com/admin/all");
+      const response = await fetch("https://cafelab-service-new.onrender.com/admin/all");
       const responseData = await response.json();
       return Array.isArray(responseData.data) ? responseData.data : [responseData.data];
     } catch (error) {

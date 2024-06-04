@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://coffelab-api.onrender.com/orders';
+const API_URL = 'https://cafelab-service-new.onrender.com/orders';
 
 
 const OrderService = {

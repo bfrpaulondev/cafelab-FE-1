@@ -49,7 +49,7 @@ const ContactTable: React.FC = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await axios.get('https://coffelab-api.onrender.com/contact/all');
+        const response = await axios.get('https://cafelab-service-new.onrender.com/contact/all');
         setContacts(response.data.data);
       } catch (err) {
         setError('Erro ao carregar contatos. Tente novamente mais tarde.');

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://coffelab-api.onrender.com';
+const BASE_URL = 'https://cafelab-service-new.onrender.com';
 
 const EventService = {
   getAllEvents: async () => {

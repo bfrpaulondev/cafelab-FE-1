@@ -23,7 +23,7 @@ const MenuSpringSection = () => {
   const [isMobile] = useMediaQuery("(max-width: 992px)");
   const itemsPerPage = isMobile ? 5 : 12;
   useEffect(() => {
-    fetch("https://coffelab-api.onrender.com/product/all")
+    fetch("https://cafelab-service-new.onrender.com/product/all")
       .then((response) => response.json())
       .then((data) =>
         setMenuItems(data.data.filter((item) => item.section === "MENU"))

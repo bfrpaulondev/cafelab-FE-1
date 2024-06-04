@@ -65,7 +65,7 @@ export default function SubscriptionComponent() {
     }
     try {
       const response = await fetch(
-        "https://coffelab-api.onrender.com/payments/cancel-subscription",
+        "https://cafelab-service-new.onrender.com/payments/cancel-subscription",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

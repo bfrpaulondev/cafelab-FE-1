@@ -1,6 +1,6 @@
 import React from 'react';
 
-const API_URL = 'https://coffelab-api.onrender.com/newsletter';
+const API_URL = 'https://cafelab-service-new.onrender.com/newsletter';
 
 export const NewsLetterService = {
   getAll: async () => {

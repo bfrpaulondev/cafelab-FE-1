@@ -101,7 +101,7 @@ export default function Checkout() {
       }
 
       const response = await fetch(
-        "https://coffelab-api.onrender.com/payments/create-subscription",
+        "https://cafelab-service-new.onrender.com/payments/create-subscription",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -188,8 +188,8 @@ export default function Checkout() {
           };
 
       const endpoint = isLoggedIn
-        ? "https://coffelab-api.onrender.com/payments/create-payment"
-        : "https://coffelab-api.onrender.com/payments/create-payment-no-account";
+        ? "https://cafelab-service-new.onrender.com/payments/create-payment"
+        : "https://cafelab-service-new.onrender.com/payments/create-payment-no-account";
 
       const response = await fetch(endpoint, {
         method: "POST",
