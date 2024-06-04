@@ -21,7 +21,7 @@ const ContatoForm: React.FC<ContatoFormProps> = ({ emailInicial }) => {
 
     try {
       // Envie a mensagem usando a lógica de envio de e-mail que discutimos anteriormente
-      console.log('Enviar e-mail:', email, mensagem);
+     
       setEnviado(true);
     } catch (error) {
       console.error('Erro ao enviar mensagem:', error);

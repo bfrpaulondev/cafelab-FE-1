@@ -43,11 +43,11 @@ export default function Products() {
     const newValue = editing
       ? { ...values, picture: image, product_id: editingProduct._id.$oid }
       : { ...values, picture: image };
-    console.log(newValue);
+   
     if (editing) {
       try {
         const data = await ProductService.updateProduct(newValue);
-        console.log(data);
+       
         if (data.msg === "success") {
           message.success("Produto editado com sucesso");
           setIsModalOpen(false);
@@ -66,7 +66,7 @@ export default function Products() {
     } else {
       try {
         const data = await ProductService.createProduct(newValue);
-        console.log(data);
+       
         if (data.msg === "success") {
           message.success("Produto criado com sucesso");
           setIsModalOpen(false);
@@ -100,10 +100,10 @@ export default function Products() {
   };
 
   const openDeleteModal = async (product) => {
-    console.log(product);
+   
     try {
       const data = await ProductService.deleteProduct(product._id.$oid);
-      console.log(data);
+  
       if (data.msg === "success") {
         message.success("Produto apgado com sucesso");
         setIsModalOpen(false);

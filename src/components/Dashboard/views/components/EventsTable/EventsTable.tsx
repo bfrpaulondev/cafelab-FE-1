@@ -154,7 +154,7 @@ const EventsTable: React.FC = () => {
     }
 
     try {
-      console.log(editEvent)
+     
       await EventService.updateEvent(editEvent);
       const updatedEvents = events.map((event) =>
         event.id === editEvent.id ? { ...event, ...editEvent } : event

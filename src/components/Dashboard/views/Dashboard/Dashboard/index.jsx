@@ -32,7 +32,7 @@ export default function Dashboard() {
         setError("Erro ao carregar os dados. Tente mais tarde.");
       } finally {
         setLoading(false);
-        console.log(lineCharts);
+       
       }
     };
 

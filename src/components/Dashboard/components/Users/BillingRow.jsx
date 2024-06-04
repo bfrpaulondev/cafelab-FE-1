@@ -38,7 +38,7 @@ function BillingRow(props) {
   const deleteOrder = async (id) => {
     try {
       const data = await OrderService.deleteOrder(id);
-      console.log(data);
+      
       window.location.reload();
     } catch (error) {
       setError("Error fetching all orders");
@@ -53,9 +53,8 @@ function BillingRow(props) {
         id_payment: _id,
         product_id: product_id,
       };
-      console.log(updatedOrder);
       const data = await OrderService.updateOrder(updatedOrder);
-      console.log(data);
+  
       setIsEditing(false);
       window.location.reload();
     } catch (error) {

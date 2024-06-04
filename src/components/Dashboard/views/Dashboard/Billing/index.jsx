@@ -12,7 +12,7 @@ function Billing() {
     const fetchAllOrders = async () => {
       try {
         const data = await OrderService.getAll();
-        console.log(data)
+       
         setOrders(data.data);
       } catch (error) {
         setError("Error fetching all orders");

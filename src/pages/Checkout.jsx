@@ -198,7 +198,7 @@ export default function Checkout() {
       });
 
       const data = await response.json();
-      console.log(data);
+     
       const { cliente_secret } = data.data;
 
       const { error, paymentIntent } = await stripe.confirmCardPayment(

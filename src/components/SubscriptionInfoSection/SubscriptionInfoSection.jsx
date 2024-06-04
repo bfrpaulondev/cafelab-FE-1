@@ -15,7 +15,7 @@ export default function SubscriptionInfoSection() {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [isMobile] = useMediaQuery("(max-width: 992px)");
   useEffect(() => {
-    console.log(location);
+   
     ProductService.getAll()
       .then((res) => {
         setProduct(res.data.filter((item) => item.section === "CAFE"));
