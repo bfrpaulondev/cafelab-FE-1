@@ -1,15 +1,16 @@
 import Header from "../components/Header/Header";
 import HomeHeroSection from "../components/HomeHeroSection/HomeHeroSection";
 import Footer from "../components/Footer/Footer";
-import { Box, HStack, VStack, useMediaQuery } from "@chakra-ui/react";
+import { Box, ChakraProvider, HStack, VStack, useMediaQuery } from "@chakra-ui/react";
 import VisitOurSpace from "../components/VisitOurSpace/VisitOurSpace";
 import SpringMenuBanner from "../components/SpringMenuBanner/SpringMenuBanner";
 import HomeEventsSection from "../components/HomeEventsSection/HomeEventsSection";
-import Popup from "../components/Popup/Popup";
+import InstallPrompt from "../utils/InstallPrompt/InstallPrompt";
 export default function Home() {
   const [mobile] = useMediaQuery("(max-width: 992px)");
 
   return (
+    <ChakraProvider>
     <Box
       sx={{
         display: "flex",
@@ -21,7 +22,7 @@ export default function Home() {
       }}
     >
       <Header />
-      <Popup/>
+      <InstallPrompt />
       <HomeHeroSection />
       {mobile ? (
         <VStack>
@@ -37,5 +38,6 @@ export default function Home() {
       <HomeEventsSection />
       <Footer />
     </Box>
+    </ChakraProvider>
   );
 }

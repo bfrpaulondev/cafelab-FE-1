@@ -65,7 +65,7 @@ const ContactTable: React.FC = () => {
     setCurrentPage(pageNumber);
   };
   const handleDeleteContact = async (id: string) => {
-   
+    console.log('Excluindo contato com id:', id);
     try {
       const response = await ServiceForm.delete(id);
       setContacts(contacts.filter(contact => contact._id.$oid !== id));

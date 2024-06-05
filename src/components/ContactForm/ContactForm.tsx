@@ -34,6 +34,7 @@ function ContactForm() {
     try {
       event.preventDefault();
       await ServiceForm.post(formData);
+      console.log("Form Data:", formData);
       message.success("Enviada com sucesso aguarde uma resposta !");
       // Limpar o formulário após o envio
       setFormData({
